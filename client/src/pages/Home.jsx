@@ -1,14 +1,15 @@
 import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Navigation from "../components/Navigation";
+
 
 const Home = () => {
   return (
     <div>
-      <header>
-      <h1>Welcome to Gamer Bud!</h1>
-      <p>Find your next gaming buddy!</p>
-      </header>
+      <header />
+      <Navigation />
 
-    <div style={styles.container}>
       <main>
         <section>
           <h2>Join or Create a Team</h2>
@@ -18,7 +19,8 @@ const Home = () => {
           {/* </section><button style={styles.button}>Join a Team</button> */}
         </section>
       </main>
-    </div>
+
+      <Footer />
     </div>
   );
 };
