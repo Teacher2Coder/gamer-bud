@@ -15,6 +15,9 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Profile from "./components/Profile"; // Noah is currently working on this component
 
+import Nav from './components/Navigation'
+import Footer from "./components/Footer";
+
 // Import global context
 // import { GbProvider } from "./utils/GlobalState";
 // Uncomment the line above when the Globale Context is ready
@@ -47,20 +50,9 @@ function App() {
   // useEffect(() into the an if token function then setUser??
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Header />
-        <main>
-          <Routes>
-            {/* We need to go back and make sure that this matches the profile component that Noah created */}
-            <Route path="/" element={<Home />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/profile" element={user ? <UserProfile user={user} />
-            <Route path="/gamelibrary" element={<GameLibrary />} />
-          </Routes>
-        </main>
+        <Nav />
+        <Outlet />
         <Footer />
-      </Router>
     </ApolloProvider>
   );
 }
