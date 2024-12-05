@@ -24,9 +24,10 @@ const postSchema = new Schema({
     type: Number,
     required: false
   },
-  status: {
+  active: {
     type: Boolean,
     required: true,
+    default: true
   },
   date: {
     type: Date,
