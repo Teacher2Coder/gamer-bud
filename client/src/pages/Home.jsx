@@ -8,7 +8,6 @@ const Home = () => {
   return (
     <div>
       <header />
-      <Navigation />
 
       <main>
         <section>
@@ -20,7 +19,6 @@ const Home = () => {
         </section>
       </main>
 
-      <Footer />
     </div>
   );
 };

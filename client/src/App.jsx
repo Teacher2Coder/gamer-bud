@@ -8,6 +8,9 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 
+import Nav from './components/Navigation'
+import Footer from "./components/Footer";
+
 // Import global context
 // import { GbProvider } from "./utils/GlobalState";
 // Uncomment the line above when the Globale Context is ready
@@ -38,7 +41,9 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+        <Nav />
         <Outlet />
+        <Footer />
     </ApolloProvider>
   );
 }
