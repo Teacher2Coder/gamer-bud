@@ -1,11 +1,12 @@
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "./components/ui/provider"
 
 import App from "./App";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
+import Profile from "./pages/Profile";
 
 const router = createBrowserRouter([
   {
@@ -22,13 +23,15 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/signup",
-        element: <Signup />,
-      },
+        path: "/Profile",
+        element: <Profile />,
+      }
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
+  <Provider>
+    <RouterProvider router={router} />
+  </Provider>
 );
