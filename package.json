@@ -1,7 +1,7 @@
 {
   "name": "gamerbud",
   "version": "1.0.0",
-  "description": "",
+  "description": "It does things\r  ### Link to deployed application",
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js",
@@ -17,7 +17,14 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
+    "@apollo/client": "^3.12.0",
+    "bcrypt": "^5.1.1",
+    "dotenv": "^8.6.0",
+    "express": "^4.21.1",
+    "graphql": "^16.9.0",
     "kill-port": "^2.0.1",
-    "dotenv": "^8.2.0"
+    "mongoose": "^8.8.3",
+    "react-router-dom": "^7.0.2",
+    "styled-components": "^6.1.13"
   }
 }
