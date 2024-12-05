@@ -1,7 +1,28 @@
+import React from "react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Navigation from "../components/Navigation";
+
+
 const Home = () => {
   return (
-  <img src="https://image.api.playstation.com/cdn/UP1018/CUSA00133_00/due3Vp0T2VSGfBtGsWjVnrL4o882iYVk.png"></img>
-  )
+    <div>
+      <header />
+      <Navigation />
+
+      <main>
+        <section>
+          <h2>Join or Create a Team</h2>
+          <p>
+            Find a team to join or create your own team to play with others.
+          </p>
+          {/* </section><button style={styles.button}>Join a Team</button> */}
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
 };
 
 export default Home;
