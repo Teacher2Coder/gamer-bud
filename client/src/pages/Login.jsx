@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 function Loginpage() {
   const [formData, setFormData] = useState({
@@ -15,11 +15,19 @@ function Loginpage() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
 
+  const [validCredentials, setValidCredentials] = useState({
+    username: 'username', //use API
+    password: 'password' //Use API
+  });
+
   function handleLoginSubmit(event) {
     event.preventDefault();
     const { username, password } = formData;
 
-    if (username === validUsername && password === validPassword) {
+    if (username === validCredentials.username && password === validCredentials.password) {
+      const user = { name: 'Test_User', email: 'Test_email', username };
+      localStorage.setItem('userProfile', JSON.stringify(user));
+      localStorage.setItem('authToken', 'your-auth-token');
       alert('Successful Login');
     } else {
       setErrorMessage('Login failed :(');
