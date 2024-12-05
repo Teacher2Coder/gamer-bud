@@ -1,6 +1,6 @@
 const { User } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
-const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc"); // We will need to store this in .env
+const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
 const resolvers = {
   Query: {
