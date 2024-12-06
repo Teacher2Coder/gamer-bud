@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/client';
 import PreviewPost from '../components/PreviewPost';
 import { QUERY_POSTS } from '../utils/queries';
 import { Container } from '@chakra-ui/react'
-import './BuddySearch.css';
+import '../styles/BuddySearch.css';
 
 const BuddySearch = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
