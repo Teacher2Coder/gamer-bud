@@ -1,9 +1,5 @@
 // Import the packages
-
-// Removed the Outlet since we're calling specific routes
-// import { Outlet } from "react-router-dom";
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,12 +7,9 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-import Header from "./components/Header";
 import Footer from "./components/Footer";
-import Profile from "./components/Profile"; // Noah is currently working on this component
 
 import Nav from './components/Navigation'
-import Footer from "./components/Footer";
 
 // Import global context
 // import { GbProvider } from "./utils/GlobalState";
