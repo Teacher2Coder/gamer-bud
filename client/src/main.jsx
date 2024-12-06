@@ -7,8 +7,10 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
 import BuddySearch from "./pages/BuddySearch";
 import BuddyPost from "./pages/BuddyPost";
+
 
 const router = createBrowserRouter([
   {
@@ -27,6 +29,11 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+
+        path: "/editprofile",
+        element: <EditProfile />,
       },
       {
         path: '/posts',
