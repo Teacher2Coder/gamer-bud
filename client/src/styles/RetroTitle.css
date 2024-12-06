@@ -1,0 +1,80 @@
+.retro-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100vh;
+    /*background: black;*/
+    background: linear-gradient(90deg, #000000, #1a1a1a, #000000); /*subtle moving gradient */
+    animation: bg-move 5s infinite linear;
+    padding-top: 10%;
+}
+
+.retro-title {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 5rem;
+    color: #ffffff;
+    text-shadow: 
+        0 0 10px #00ff00, 0 0 20px #00ff00,
+        0 0 30px #0088ff, 0 0 40px #0088ff;
+    animation: glow-shift 3s infinite alternate, float 2s infinite ease-in-out;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.retro-content {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+}
+
+.retro-content h2 {
+    margin-top: 25rem;
+    margin-bottom: 1rem;
+    color:  rgba(255, 255, 255, 0.8);
+}
+
+.retro-content p {
+    margin-top: 2rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* background animation */
+@keyframes bg-move {
+    0% {
+      background-position: 0% 50%;
+    }
+    100% {
+      background-position: 100% 50%;
+    }
+}
+
+/* this will cycle the glow colors */
+@keyframes glow-shift {
+    0% {
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #0088ff, 0 0 40px #0088ff;
+    }
+    25% {
+      text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff, 0 0 30px #ff00ff, 0 0 40px #ff00ff;
+    }
+    50% {
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #ff00ff, 0 0 30px #ff0000, 0 0 40px #ff0000;
+    }
+    75% {
+      text-shadow: 0 0 10px #ff0000, 0 0 20px #ff0000, 0 0 30px #00ff00, 0 0 40px #00ff00;
+    }
+    100% {
+      text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00, 0 0 30px #0088ff, 0 0 40px #0088ff;
+    }
+}
+
+/* floating effect */
+@keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+}
