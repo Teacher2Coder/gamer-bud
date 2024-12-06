@@ -20,6 +20,27 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  xboxTag: {
+    type: String
+  },
+  psTag: {
+    type: String
+  },
+  nintendoTag: {
+    type: String
+  },
+  twitchTag: {
+    type: String
+  },
+  steamTag: {
+    type: String
+  },
+  appleTag: {
+    type: String
+  },
+  galaxyTag: {
+    type: String
+  },
 });
 
 // set up pre-save middleware to create password

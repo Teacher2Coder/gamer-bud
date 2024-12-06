@@ -9,11 +9,33 @@ db.once("open", async () => {
 
   console.log("Database cleaned");
 
-  await User.create({
-    username: "EvilKoala",
-    email: "ethan.owens4@gmail.com",
-    password: "password12345",
-  });
+  await User.insertMany([
+    {
+      username: "EvilKoala",
+      email: "koala@gmail.com",
+      password: "password12345",
+      xboxTag: 'EvilKoala40',
+      steamTag: 'SteamyBoy'
+    },
+    {
+      username: "EvilTiger",
+      email: "tiger@gmail.com",
+      password: "password12345",
+      psTag: 'EvilKoala39',
+    },
+    {
+      username: "EvilCat",
+      email: "cat@gmail.com",
+      password: "password12345",
+      nintendoTag: 'EvilKoala38',
+    },
+    {
+      username: "EvilDuck",
+      email: "duck@gmail.com",
+      password: "password12345",
+      appleTag: 'EvilKoala37',
+    },
+  ])
 
   await Post.insertMany([
     {
