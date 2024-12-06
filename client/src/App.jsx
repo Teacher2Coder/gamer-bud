@@ -9,7 +9,8 @@ import {
 import { setContext } from "@apollo/client/link/context";
 import Footer from "./components/Footer";
 
-import Nav from './components/Navigation'
+import Nav from './components/Navigation';
+import './App.css';
 
 // Import global context
 // import { GbProvider } from "./utils/GlobalState";
@@ -43,9 +44,13 @@ function App() {
   // useEffect(() into the an if token function then setUser??
   return (
     <ApolloProvider client={client}>
+      <div className="app-container">
         <Nav />
-        <Outlet />
+        <main className="content">
+          <Outlet />
+        </main>
         <Footer />
+      </div>
     </ApolloProvider>
   );
 }
