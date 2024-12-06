@@ -1,9 +1,11 @@
 const db = require("./connection");
-const { User,Game } = require("../models");
+const { User, Post, Game } = require("../models");
 const cleanDB = require("./cleanDB");
 
 db.once("open", async () => {
   await cleanDB("User", "users");
+  await cleanDB("Game", "games");
+  await cleanDB("Post", "posts");
 
   console.log("Database cleaned");
 
@@ -12,6 +14,32 @@ db.once("open", async () => {
     email: "ethan.owens4@gmail.com",
     password: "password12345",
   });
+
+  await Post.insertMany([
+    {
+      author: 'EvilKoala',
+      game: 'Animal Crossing',
+      platform: 'Nintendo Switch',
+      description: 'We doin hood rat shit in Animal Crossing',
+      playersNeeded: '4',
+    },
+    {
+      author: 'EvilKoala',
+      game: 'Black Ops 6',
+      platform: 'Xbox',
+      description: 'We runnin some zombies',
+      playersNeeded: '3',
+    },
+    {
+      author: 'EvilKoala',
+      game: 'Minecraft',
+      platform: 'Playstation',
+      description: 'Fighting the Ender Dragon',
+      playersNeeded: '3',
+    },
+  ])
+
+
   const gameData = [
     {
       title: 'Animal Crossing: New Horizons',
