@@ -1,4 +1,4 @@
-const { User } = require("../models");
+const { User, Post } = require("../models");
 const { signToken, AuthenticationError } = require("../utils/auth");
 const stripe = require("stripe")(process.env.STRIPE_SECRET);
 
@@ -12,6 +12,10 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+    posts: async (parent, args, context) => {
+      const posts = Post.find();
+      return posts
+    }
   },
   Mutation: {
     addUser: async (parent, args) => {

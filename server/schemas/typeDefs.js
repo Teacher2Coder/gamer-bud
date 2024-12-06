@@ -6,6 +6,17 @@ const typeDefs = `
     password: String!
   }
 
+  type Post {
+    _id: ID
+    author: String!
+    game: String!
+    platform: String!
+    description: String!
+    playersNeeded: String
+    active: Boolean!
+    date: String!
+  }
+
   type Auth {
     token: ID
     user: User
@@ -13,6 +24,7 @@ const typeDefs = `
 
   type Query {
     user: User
+    posts: [Post]
   }
 
   type Mutation {
