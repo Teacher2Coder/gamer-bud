@@ -16,7 +16,7 @@ export const QUERY_POSTS = gql`
 
 export const QUERY_SINGLE_POST = gql`
   query singlePost ($postId: ID!) {
-    post {
+    post(postId: $postId) {
       _id
       author
       game

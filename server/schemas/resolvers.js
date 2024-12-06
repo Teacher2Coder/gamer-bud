@@ -13,8 +13,12 @@ const resolvers = {
       throw AuthenticationError;
     },
     posts: async (parent, args, context) => {
-      const posts = Post.find();
-      return posts
+      const posts = await Post.find();
+      return posts;
+    },
+    post: async (parent, { postId }) => {
+      const post = await Post.findById(postId);
+      return post;
     }
   },
   Mutation: {
