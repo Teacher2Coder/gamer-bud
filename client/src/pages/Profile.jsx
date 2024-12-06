@@ -1,40 +1,54 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function Profile() {
-    const [user, setUser] = useState(null);
-    const navigate = useNavigate();
+const Profile = () => {
+  const [profile, setProfile] = useState(null);
 
-    useEffect(() => {
-        const storedUser = localStorage.getItem('userProfile');
+  useEffect(() => {
+    // API FETCH 
+    setProfile({
+      username: 'Le subject',
+      email: 'Le email',
+      status: 'Le Status.',
+      profilePicture: '#'
+    });
+  }, []);
 
-        if (storedUser) {
-            setUser(JSON.parse(storedUser));
-        } else {
-            navigate('/login');
-        }
-    }, [navigate]);
+  const navigate = useNavigate();
 
-    const handleLogout = () => {
-        localStorage.removeItem('authToken');
-        localStorage.removeItem('userProfile');
-        navigate('/login');
-    };
+  const handleEditProfile = () => {
+    navigate('/editprofile');
+  };
 
-    return (
-        <div>
-            {user ? (
-                <div>
-                    <h2>Profile</h2>
-                    <p>Name: {user.name}</p>
-                    <p>Email: {user.email}</p>
-                    <button onClick={handleLogout}>Logout</button>
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
-        </div>
-    );
-}
+  const handleSignOut = () => {
+    localStorage.removeItem('authToken');
+    navigate('/login');
+  };
+
+  if (!profile) {
+    return <div>Loading...</div>;
+  }
+
+  return (
+    <div className="profile">
+      <h1>{profile.username}</h1>
+      <img 
+        src={profile.profilePicture} 
+        className="profile-picture"
+        style={{
+            width: '200px',
+            height: '200px',
+            borderRadius: '50%',
+            objectFit: 'cover',
+            margin: '20px',
+          }}
+      />
+      <p>Email: {profile.email}</p>
+      <p>Status: {profile.status}</p>
+      <button onClick={handleEditProfile}>Edit Profile</button>
+      <button onClick={handleSignOut}>Sign Out</button>
+    </div>
+  );
+};
 
 export default Profile;

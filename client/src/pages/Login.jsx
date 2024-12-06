@@ -1,6 +1,11 @@
 import { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
+//ToDO: The user data needs to be retrieved by making an API
+//call to the backend
 function Loginpage() {
+
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     username: '',
     password: ''
@@ -25,10 +30,15 @@ function Loginpage() {
     const { username, password } = formData;
 
     if (username === validCredentials.username && password === validCredentials.password) {
-      const user = { name: 'Test_User', email: 'Test_email', username };
+      const user = { name: 'Test_User', email: 'Test_email', username,
+        profilePicture: '#'
+       };
       localStorage.setItem('userProfile', JSON.stringify(user));
       localStorage.setItem('authToken', 'your-auth-token');
+      localStorage.removeItem('userStatus');
+      setErrorMessage('');
       alert('Successful Login');
+      navigate('/profile');
     } else {
       setErrorMessage('Login failed :(');
     }
