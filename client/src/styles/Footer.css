@@ -1,0 +1,8 @@
+.footer-container {
+    background: linear-gradient(90deg, #000000, #1a1a1a, #000000);
+}
+
+p {
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+}

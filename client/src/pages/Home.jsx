@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
+import RetroTitle from "../components/RetroTitle";
 
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       <header />
 
       <main>
+        <RetroTitle>
         <section>
           <h2>Join or Create a Team</h2>
           <p>
@@ -17,6 +19,7 @@ const Home = () => {
           </p>
           {/* </section><button style={styles.button}>Join a Team</button> */}
         </section>
+        </RetroTitle>
       </main>
 
     </div>
