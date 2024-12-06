@@ -25,6 +25,7 @@ const typeDefs = `
   type Query {
     user: User
     posts: [Post]
+    post(postId: ID!): Post
   }
 
   type Mutation {

@@ -8,6 +8,7 @@ import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import BuddySearch from "./pages/BuddySearch";
+import BuddyPost from "./pages/BuddyPost";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: '/posts',
         element: <BuddySearch />
+      },
+      {
+        path: '/post/:postId',
+        element: <BuddyPost />
       }
     ],
   },
