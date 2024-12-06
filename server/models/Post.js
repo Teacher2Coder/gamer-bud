@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const dateFormat = require("../utils/dateFormat");
 
 const { Schema } = mongoose;
 
@@ -21,7 +22,7 @@ const postSchema = new Schema({
     required: false,
   },
   playersNeeded: {
-    type: Number,
+    type: String,
     required: false
   },
   active: {
@@ -31,7 +32,8 @@ const postSchema = new Schema({
   },
   date: {
     type: Date,
-    default: new Date
+    default: Date.now,
+    get: (timestamp) => dateFormat(timestamp),
   }
 });
 
