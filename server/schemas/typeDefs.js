@@ -25,13 +25,17 @@ const typeDefs = `
   type Query {
     user: User
     posts: [Post]
+    platforms(platformKind: String!): [Post]
+    gamePosts(gameName: String!): [Post]
     post(postId: ID!): Post
+
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     updateUser(username: String!, email: String!, password: String!): User
     login(email: String!, password: String!): Auth
+    addPost(author: String!, game: String!, platform: String!, description: String!, playersNeeded: String!): Post
   }
 `;
 

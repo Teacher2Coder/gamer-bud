@@ -19,6 +19,14 @@ const resolvers = {
     post: async (parent, { postId }) => {
       const post = await Post.findById(postId);
       return post;
+    },
+    platforms: async (parent, { platformKind }) => {
+      const posts = await Post.find({ platform: platformKind });
+      return posts;
+    },
+    gamePosts: async (parent, { gameName }) => {
+      const posts = await Post.find({ game: gameName })
+      return posts;
     }
   },
   Mutation: {
@@ -54,6 +62,10 @@ const resolvers = {
 
       return { token, user };
     },
+    addPost: async (parent, { author, game, platform, description, playersNeeded }) => {
+      const post = Post.create({ author, game, platform, description, playersNeeded });
+      return post;
+    }
   },
 };
 
