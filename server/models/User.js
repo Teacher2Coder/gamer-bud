@@ -21,26 +21,39 @@ const userSchema = new Schema({
     minlength: 5,
   },
   xboxTag: {
-    type: String
+    type: String,
+    unique: true
   },
   psTag: {
-    type: String
+    type: String,
+    unique: true
   },
   nintendoTag: {
-    type: String
+    type: String,
+    unique: true
   },
   twitchTag: {
-    type: String
+    type: String,
+    unique: true
   },
   steamTag: {
-    type: String
+    type: String,
+    unique: true
   },
   appleTag: {
-    type: String
+    type: String,
+    unique: true
   },
   galaxyTag: {
-    type: String
+    type: String,
+    unique: true
   },
+  games: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Game'
+    }
+  ]
 });
 
 // set up pre-save middleware to create password

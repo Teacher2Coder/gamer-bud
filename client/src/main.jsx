@@ -9,7 +9,10 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import EditProfile from "./pages/EditProfile";
 import BuddySearch from "./pages/BuddySearch";
+import BuddySearchPlatform from "./pages/BuddySearchPlatform";
+import BuddySearchGame from "./pages/BuddySearchGames";
 import BuddyPost from "./pages/BuddyPost";
+import FindBuddies from "./pages/FindBuddies";
 
 
 const router = createBrowserRouter([
@@ -40,8 +43,20 @@ const router = createBrowserRouter([
         element: <BuddySearch />
       },
       {
+        path: '/posts/platforms/:platformKind',
+        element: <BuddySearchPlatform />
+      },
+      {
+        path: '/posts/games/:gameName',
+        element: <BuddySearchGame />
+      },
+      {
         path: '/post/:postId',
         element: <BuddyPost />
+      },
+      {
+        path: '/find-a-buddy',
+        element: <FindBuddies />
       }
     ],
   },
