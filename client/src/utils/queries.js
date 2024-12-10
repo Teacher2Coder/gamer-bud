@@ -62,13 +62,13 @@ export const QUERY_SINGLE_POST = gql`
 
 
 export const QUERY_ME = gql`
-{
-me{
-_id
-username
-email
-status
-profilePicture
-
-}
-}`
+  {
+    me {
+      _id
+      username
+      email
+      status
+      profilePicture
+    }
+  }
+`

@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
-import { Container } from '@chakra-ui/react';
+import { Card, Button } from '@chakra-ui/react';
 
 const PreviewPost = ({posts, title}) => {
   if (!posts.length) {
     return <h3>No posts yet</h3>
   }
-
-  console.log(posts);
 
   return (
     <div>
@@ -15,16 +13,22 @@ const PreviewPost = ({posts, title}) => {
         {posts &&
           posts.map((post) => (
             <div key={post._id}>
-              <Container>
-                <h4>Gamer: {post.author}</h4>
-                <h5>Game: {post.game}</h5>
-                <h5>Platform: {post.platform}</h5>
-                <h5>Players Needed: {post.playersNeeded}</h5>
-                <h5>Date Posted: {post.date}</h5>
-                <Link to={`/post/${post._id}`}>
-                  Learn More
-                </Link>
-              </Container>
+              <Card.Root margin='10px'>
+                  <Card.Body>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+                      <h4>Gamer: {post.author}</h4>
+                      <h5>Game: {post.game}</h5>
+                    </div>
+                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+                      <h5>Platform: {post.platform}</h5>
+                      <h5>Players Needed: {post.playersNeeded}</h5>
+                    </div>
+                  <h5 style={{alignSelf: 'center', marginTop: '10px'}}>Date Posted: {post.date}</h5>
+                  <Link to={`/post/${post._id}`} style={{alignSelf: 'center', marginTop: '20px'}}>
+                    <Button>Learn More</Button>
+                  </Link>
+                </Card.Body>
+              </Card.Root>
             </div>
           ))
 

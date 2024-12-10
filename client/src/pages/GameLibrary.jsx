@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import PreviewGames from '../components/PreviewGames';
 // import './GameLibrary.css';
 // const { REACT_APP_RAWG_KEY } = process.env;
 
@@ -79,22 +79,7 @@ const GameLibrary = () => {
         <button onClick={previousPage}>Previous page</button>
         <button onClick={nextPage}>Next Page</button>
       </div>
-      <div className="game-grid">
-        {games.map((game) => (
-          <div key={game.id} className="game-card">
-            <Link to={`/posts/games/${game.name}`}>
-              <img src={game.background_image} alt={game.name} className="game-cover" />
-            </Link>
-            <h2>{game.name}</h2>
-            <h3>Platforms</h3>
-            {game.platforms.map((platformName) => (
-              <div key={platformName.id} >
-                <p style={{color: 'black'}}>{platformName.platform.name}</p>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
+      <PreviewGames games={games} />
       <div>
         <button onClick={previousPage}>Previous page</button>
         <button onClick={nextPage}>Next Page</button>
