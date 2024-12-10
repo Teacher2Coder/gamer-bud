@@ -13,7 +13,7 @@ const PreviewPost = ({posts, title}) => {
         {posts &&
           posts.map((post) => (
             <div key={post._id}>
-              <Card.Root margin='10px'>
+              <Card.Root margin='10px' backgroundColor='black'>
                   <Card.Body>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                       <h4>Gamer: {post.author}</h4>

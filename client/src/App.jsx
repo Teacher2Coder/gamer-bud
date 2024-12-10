@@ -8,9 +8,8 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Footer from "./components/Footer";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
-import Nav from './components/Navigation';
 import './App.css';
 import Header from "./components/Header";
 
