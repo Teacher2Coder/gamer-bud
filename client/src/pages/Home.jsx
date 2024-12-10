@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Navigation from "../components/Navigation";
 import RetroTitle from "../components/RetroTitle";
+import "../styles/RetroButtons.css";
 
 
 const Home = () => {
@@ -12,6 +13,10 @@ const Home = () => {
 
       <main>
         <RetroTitle>
+          <div className="home-buttons">
+            <button className="retro-button">Login</button>
+            <button className="retro-button">Sign Up</button>
+          </div>
         <section>
           <h2>Join or Create a Team</h2>
           <p>
