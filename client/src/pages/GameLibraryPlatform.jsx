@@ -1,28 +1,27 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 // import './GameLibrary.css';
 // const { REACT_APP_RAWG_KEY } = process.env;
 
-const GameLibrary = () => {
+const GameLibraryPlatform = () => {
   const [games, setGames] = useState([]);
   const [page, setPage] = useState(1);
+  const { platformKind } = useParams();
   const [formState, setFormState] = useState({
     search: ''
   });
 
   useEffect(() => {
     // Fetch games from the backend
-    axios.get(`https://api.rawg.io/api/games?key=d34ea2467e8445f3b3a5876dd97c80c6&page=${page}`)
+    axios.get(`https://api.rawg.io/api/games?key=d34ea2467e8445f3b3a5876dd97c80c6&page=${page}&platform=${platformKind}`)
       .then((response) => setGames(response.data.results))
       .catch((error) => console.error('Error fetching games:', error));
-  }, [page]);
+  }, [page, platformKind]);
 
   const nextPage = () => {
-    // increase page state by one
-    setPage(page + 1)
+    setPage(page + 1);
 
-    // Scroll back to the top
     window.scrollTo({
       top: 0,
       left: 0,
@@ -31,10 +30,8 @@ const GameLibrary = () => {
   }
 
   const previousPage = () => {
-    // reduce page state by one
-    setPage(page - 1)
+    setPage(page - 1);
 
-    // Scroll back to the top
     window.scrollTo({
       top: 0,
       left: 0,
@@ -44,16 +41,16 @@ const GameLibrary = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
+  
     // If searchbar isn't blank, redirect to the appropriate url
     if (formState.search !== '') {
       window.location.href = `/gamelibrary/games/${formState.search}`
     }
-    
+      
     // make form blank again
     setFormState({ search: '' });
   }
-
+  
   const handleFormChange = (e) => {
     const { name, value } = e.target;
     setFormState({...formState, [name]: value});
@@ -88,7 +85,7 @@ const GameLibrary = () => {
             <h2>{game.name}</h2>
             <h3>Platforms</h3>
             {game.platforms.map((platformName) => (
-              <div key={platformName.id} >
+              <div key={platformName.id}>
                 <p style={{color: 'black'}}>{platformName.platform.name}</p>
               </div>
             ))}
@@ -104,5 +101,4 @@ const GameLibrary = () => {
     
 };
 
-export default GameLibrary;
-
+export default GameLibraryPlatform;
