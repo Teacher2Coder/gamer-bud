@@ -26,6 +26,11 @@ const userSchema = new Schema({
   profilePicture: {
     type: String,
   },
+  games: [
+    {
+      type: String
+    }
+  ]
   // xboxTag: {
   //   type: String,
   //   unique: true
@@ -54,12 +59,6 @@ const userSchema = new Schema({
   //   type: String,
   //   unique: true
   // },
-  games: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Game'
-    }
-  ]
 });
 
 // set up pre-save middleware to create password

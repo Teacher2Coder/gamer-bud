@@ -27,6 +27,10 @@ const resolvers = {
     gamePosts: async (parent, { gameName }) => {
       const posts = await Post.find({ game: gameName })
       return posts;
+    },
+    userGames: async (parent) => {
+      const user = await User.findOne({ _id: '6758952a969a8bf629a1a5ef' });
+      return user;
     }
   },
   Mutation: {
@@ -65,6 +69,14 @@ const resolvers = {
     addPost: async (parent, { author, game, platform, description, playersNeeded }) => {
       const post = Post.create({ author, game, platform, description, playersNeeded });
       return post;
+    },
+    addGame: async (parent, { userId, game }) => {
+      const user = await User.updateOne({ _id: userId }, { $push: { games: game } });
+      return user;
+    },
+    removeGame: async (parent, { userId, game }) => {
+      const user = await User.updateOne({ _id: userId} , { $pull: { games: game } });
+      return user;
     }
   },
 };

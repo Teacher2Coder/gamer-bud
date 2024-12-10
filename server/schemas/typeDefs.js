@@ -6,6 +6,7 @@ const typeDefs = `
     password: String!
     status: String!
     profilePicture: String!
+    games: [String!]
   }
 
   type Post {
@@ -30,7 +31,7 @@ const typeDefs = `
     platforms(platformKind: String!): [Post]
     gamePosts(gameName: String!): [Post]
     post(postId: ID!): Post
-
+    userGames: User
   }
 
   type Mutation {
@@ -38,6 +39,8 @@ const typeDefs = `
     updateUser(username: String!, email: String!, password: String!): User
     login(email: String!, password: String!): Auth
     addPost(author: String!, game: String!, platform: String!, description: String!, playersNeeded: String!): Post
+    addGame(userId: ID!, game: String!): User
+    removeGame(userId: ID!, game: String!): User
   }
 `;
 

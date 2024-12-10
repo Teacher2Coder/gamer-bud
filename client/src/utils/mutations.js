@@ -13,3 +13,19 @@ export const ADD_POST = gql`
     }
   }
 `
+
+export const ADD_GAME = gql`
+  mutation addGame($userId: ID!, $game: String!) {
+    addGame(userId: $userId, game: $game) {
+      games
+    }
+  }
+`
+
+export const REMOVE_GAME =gql`
+  mutation removeGame($userId: ID!, $game: String!) {
+    removeGame(userId: $userId, game: $game) {
+      games
+    }
+  }
+`

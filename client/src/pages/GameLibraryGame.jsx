@@ -62,16 +62,17 @@ const GameLibraryGame = () => {
     <div className="game-library">
       <h1 style={{ textAlign: 'center' }}>Game Library</h1>
       <form className='game-search' onSubmit={handleFormSubmit} >
-        <div className='game-search'>
+        <div style={{ width: '45%' }}>
           <input
             name='search'
             placeholder='Search for games...'
+            className='game-search-bar'
             value = {formState.search}
             style = {{ color: 'white', padding: '5px', backgroundColor: 'black', marginRight: '10px' }}
             onChange={handleFormChange}
           ></input>
         </div>
-        <Button backgroundColor='blue' color='white' type='submit'>Search</Button>
+        <Button className='search-button' backgroundColor='blue' color='white' type='submit'>Search</Button>
       </form>
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginBottom: '20px' }}>
         <Button backgroundColor='blue' color='white' onClick={previousPage}>Previous page</Button>
