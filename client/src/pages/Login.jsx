@@ -20,32 +20,14 @@ function Loginpage() {
   const [errorMessage, setErrorMessage] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
 
-  const [validCredentials, setValidCredentials] = useState({
-    username: 'username', //use API
-    password: 'password' //Use API
+  const [validCredentials] = useState({
+    username: '',
+    password: ''
   });
 
-  function handleLoginSubmit(event) {
-    event.preventDefault();
-    const { username, password } = formData;
-
-    if (username === validCredentials.username && password === validCredentials.password) {
-      const user = { name: 'Test_User', email: 'Test_email', username,
-        profilePicture: '#'
-       };
-      localStorage.setItem('userProfile', JSON.stringify(user));
-      localStorage.setItem('authToken', 'your-auth-token');
-      localStorage.removeItem('userStatus');
-      setErrorMessage('');
-      alert('Successful Login');
-      navigate('/profile');
-    } else {
-      setErrorMessage('Login failed :(');
-    }
-  }
   function handleSignUpSubmit(event) {
     event.preventDefault();
-    const { username, password, confirmPassword } = signUpData;
+    const { password, confirmPassword } = signUpData;
     if (password !== confirmPassword) {
       setErrorMessage("Passwords do not match");
       return;
@@ -67,6 +49,26 @@ function Loginpage() {
       [name]: value
     }));
   }
+
+  function handleLoginSubmit(event) {
+    event.preventDefault();
+    const { username, password } = formData;
+
+    if (username === validCredentials.username && password === validCredentials.password) {
+      const user = { name: '', email: '', username,
+        profilePicture: ''
+       };
+      localStorage.setItem('userProfile', JSON.stringify(user));
+      localStorage.setItem('authToken', 'your-auth-token');
+      localStorage.removeItem('userStatus');
+      setErrorMessage('');
+      alert('Successful Login');
+      navigate('/profile');
+    } else {
+      setErrorMessage('Login failed :(');
+    }
+  }
+
   return (
     <div className="loginsection">
       <h2>{isSignUp ? 'Create Account' : 'Login'}</h2>

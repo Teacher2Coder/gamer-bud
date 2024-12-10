@@ -20,6 +20,14 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  status: {
+    type: String,
+    required: true,
+  },
+  profilePicture: {
+    type: String,
+    required: true
+  },
   xboxTag: {
     type: String,
     unique: true
