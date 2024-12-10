@@ -1,5 +1,5 @@
 // Import the packages
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import {
   ApolloClient,
   InMemoryCache,
@@ -8,9 +8,11 @@ import {
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
 import Footer from "./components/Footer";
+import React, { useEffect, useState } from "react";
 
 import Nav from './components/Navigation';
 import './App.css';
+import Header from "./components/Header";
 
 // Import global context
 // import { GbProvider } from "./utils/GlobalState";
@@ -42,10 +44,19 @@ const client = new ApolloClient({
 function App() {
   // const [user, setUser] = useState({});???
   // useEffect(() into the an if token function then setUser??
+  const [isLogged, setIsLogged] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const token = localStorage.getItem("id_token");
+    setIsLogged(!!token);
+  }, []);
+
   return (
     <ApolloProvider client={client}>
       <div className="app-container">
-        <Nav />
+        {/* <Nav /> */}
+        {location.pathname !== "/" && isLogged && <Header />}
         <main className="content">
           <Outlet />
         </main>
