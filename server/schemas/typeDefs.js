@@ -4,6 +4,8 @@ const typeDefs = `
     username: String!
     email: String!
     password: String!
+    status: String!
+    profilePicture: String!
   }
 
   type Post {
