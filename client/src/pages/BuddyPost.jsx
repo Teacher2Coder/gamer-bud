@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
 import { useParams } from "react-router-dom";
 import { Card } from '@chakra-ui/react';
+import '../styles/BuddyPost.css';
 
 import { QUERY_SINGLE_POST } from "../utils/queries";
 

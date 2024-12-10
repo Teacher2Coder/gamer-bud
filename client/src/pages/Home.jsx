@@ -11,8 +11,12 @@ const Home = () => {
       <main>
         <RetroTitle>
           <div className="home-buttons">
-            <a className="retro-button" href="/login">Login</a>
+          <Link to="/login">
+            <button className="retro-button">Login</button>
+            </Link>
+            <Link to="/signup">
             <button className="retro-button">Sign Up</button>
+            </Link>
           </div>
         <section>
           <h2>Join or Create a Team</h2>
