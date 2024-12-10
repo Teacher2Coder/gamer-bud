@@ -1,0 +1,131 @@
+main {
+    font-family: 'Press Start 2P', cursive;
+    background-image: url(../../public/GamerBudRetro.jpg);
+    color: white;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #f7f4f4;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    color: #f7f4f4;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  
+  h4, h5 {
+    color: #f8f8f8;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  p {
+    color: #f8f8f8;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+  
+  button {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .loading {
+    text-align: center;
+    font-size: 18px;
+    color: #fff8f8;
+  }
+  
+  .card-root {
+    width: 75%;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 18px;
+    }
+  
+    p, h4, h5 {
+      font-size: 14px;
+    }
+  
+    button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  
+    .container {
+      padding: 15px;
+    }
+  
+    .loading {
+      font-size: 16px;
+    }
+  
+    .card-root {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 16px;
+    }
+  
+    p, h4, h5 {
+      font-size: 12px;
+    }
+  
+    button {
+      font-size: 12px;
+      padding: 6px 12px;
+    }
+  
+    .container {
+      padding: 10px;
+    }
+  
+    .loading {
+      font-size: 14px;
+    }
+  
+    .card-root {
+      width: 100%;
+    }
+  }
