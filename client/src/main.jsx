@@ -16,7 +16,7 @@ import FindBuddies from "./pages/FindBuddies";
 import GameLibrary from "./pages/GameLibrary";
 import GameLibraryPlatform from "./pages/GameLibraryPlatform";
 import GameLibraryGame from "./pages/GameLibraryGame";
-
+import SignUpPage from "./pages/Signup";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <Profile />,
+      },
+      {
+        path: "/Signup",
+        element: <SignUpPage />,
       },
       {
 
