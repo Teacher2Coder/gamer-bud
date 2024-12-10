@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import { QUERY_ME } from '../utils/queries';
+import { useQuery } from '@apollo/client';
 const Profile = () => {
   const [profile, setProfile] = useState(null);
-
+  const { data } = useQuery(QUERY_ME)
   useEffect(() => {
-    // API FETCH 
+
     setProfile({
-      username: 'Le subject',
-      email: 'Le email',
-      status: 'Le Status.',
-      profilePicture: '#'
+      username: '',
+      email: '',
+      status: '',
+      profilePicture: ''
     });
   }, []);
+  const userData = data?.me;
+  setProfile(userData);
 
   const navigate = useNavigate();
 
@@ -32,16 +35,16 @@ const Profile = () => {
   return (
     <div className="profile">
       <h1>{profile.username}</h1>
-      <img 
-        src={profile.profilePicture} 
+      <img
+        src={profile.profilePicture}
         className="profile-picture"
         style={{
-            width: '200px',
-            height: '200px',
-            borderRadius: '50%',
-            objectFit: 'cover',
-            margin: '20px',
-          }}
+          width: '200px',
+          height: '200px',
+          borderRadius: '50%',
+          objectFit: 'cover',
+          margin: '20px',
+        }}
       />
       <p>Email: {profile.email}</p>
       <p>Status: {profile.status}</p>
