@@ -1,6 +1,6 @@
 main {
     font-family: 'Press Start 2P', cursive;
-    background-color: black;
+    background-image: url(../../public/GamerBudRetro.jpg);
     color: white;
     padding: 20px;
   }
