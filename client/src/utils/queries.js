@@ -72,3 +72,11 @@ export const QUERY_ME = gql`
     }
   }
 `
+
+export const QUERY_MY_GAMES = gql`
+  query myGames {
+    userGames {
+      games
+    }
+  }
+`

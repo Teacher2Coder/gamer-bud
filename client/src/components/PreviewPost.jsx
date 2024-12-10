@@ -16,11 +16,26 @@ const PreviewPost = ({posts, title}) => {
               <Card.Root margin='10px' backgroundColor='black'>
                   <Card.Body>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                      <h4>Gamer: {post.author}</h4>
-                      <h5>Game: {post.game}</h5>
+                      <h4>
+                        Gamer:
+                        <Link to={`/`} style={{ marginLeft: '10px' }}>
+                          {post.author}
+                        </Link>
+                      </h4>
+                      <h5>
+                        Game:
+                        <Link to={`/posts/games/${post.game}`} style={{ marginLeft: '10px' }}>
+                          {post.game}
+                        </Link>
+                      </h5>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                      <h5>Platform: {post.platform}</h5>
+                      <h5>
+                        Platform: 
+                        <Link to={`/posts/platforms/${post.platform}`} style={{ marginLeft: '10px' }}>
+                          {post.platform}
+                        </Link>
+                      </h5>
                       <h5>Players Needed: {post.playersNeeded}</h5>
                     </div>
                   <h5 style={{alignSelf: 'center', marginTop: '10px'}}>Date Posted: {post.date}</h5>

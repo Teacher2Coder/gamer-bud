@@ -14,6 +14,7 @@ db.once("open", async () => {
       username: "EvilKoala",
       email: "koala@gmail.com",
       password: "password12345",
+      games: ['Call of Duty: Black Ops 6', 'Madden NFL 25']
     },
     {
       username: "EvilTiger",
