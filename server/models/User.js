@@ -26,34 +26,34 @@ const userSchema = new Schema({
   profilePicture: {
     type: String,
   },
-  xboxTag: {
-    type: String,
-    unique: true
-  },
-  psTag: {
-    type: String,
-    unique: true
-  },
-  nintendoTag: {
-    type: String,
-    unique: true
-  },
-  twitchTag: {
-    type: String,
-    unique: true
-  },
-  steamTag: {
-    type: String,
-    unique: true
-  },
-  appleTag: {
-    type: String,
-    unique: true
-  },
-  galaxyTag: {
-    type: String,
-    unique: true
-  },
+  // xboxTag: {
+  //   type: String,
+  //   unique: true
+  // },
+  // psTag: {
+  //   type: String,
+  //   unique: true
+  // },
+  // nintendoTag: {
+  //   type: String,
+  //   unique: true
+  // },
+  // twitchTag: {
+  //   type: String,
+  //   unique: true
+  // },
+  // steamTag: {
+  //   type: String,
+  //   unique: true
+  // },
+  // appleTag: {
+  //   type: String,
+  //   unique: true
+  // },
+  // galaxyTag: {
+  //   type: String,
+  //   unique: true
+  // },
   games: [
     {
       type: Schema.Types.ObjectId,

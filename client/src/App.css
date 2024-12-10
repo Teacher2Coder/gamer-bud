@@ -1,3 +1,10 @@
+body {
+    min-height: 100vh;
+    margin: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
 .app-container {
     display: flex;
     flex-direction: column;
@@ -6,4 +13,40 @@
 
 .content {
     flex: 1;
+}
+
+.game-search {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game-grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.game-card {
+    width: 30%;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 786px) {
+    .game-card {
+        width: 45%
+    }
+}
+
+@media screen and (max-width: 425px){
+    .game-card {
+        width: 90%
+    }
+    .game-search {
+        flex-direction: column;
+        justify-content: center;
+        width: 90%;
+        align-self: center;
+    }
 }

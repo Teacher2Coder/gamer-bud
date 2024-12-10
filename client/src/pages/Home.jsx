@@ -11,7 +11,7 @@ const Home = () => {
       <main>
         <RetroTitle>
           <div className="home-buttons">
-            <button className="retro-button">Login</button>
+            <a className="retro-button" href="/login">Login</a>
             <button className="retro-button">Sign Up</button>
           </div>
         <section>

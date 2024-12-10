@@ -35,22 +35,22 @@ db.once("open", async () => {
   await Post.insertMany([
     {
       author: 'EvilKoala',
-      game: 'Animal Crossing',
+      game: 'Animal Crossing: New Horizons',
       platform: 'Nintendo Switch',
       description: 'We doin hood rat shit in Animal Crossing',
       playersNeeded: '4',
     },
     {
       author: 'EvilKoala',
-      game: 'Black Ops 6',
-      platform: 'Xbox',
+      game: 'Call of Duty: Black Ops 6',
+      platform: 'Xbox Series S/X',
       description: 'We runnin some zombies',
       playersNeeded: '3',
     },
     {
       author: 'EvilKoala',
       game: 'Grand Theft Auto V',
-      platform: 'Playstation 5',
+      platform: 'PlayStation 5',
       description: 'Doing a heist',
       playersNeeded: '3',
     },
