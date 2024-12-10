@@ -1,8 +1,5 @@
-import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import Navigation from "../components/Navigation";
 import RetroTitle from "../components/RetroTitle";
+import { Link } from 'react-router-dom';
 import "../styles/RetroButtons.css";
 
 
@@ -19,9 +16,11 @@ const Home = () => {
           </div>
         <section>
           <h2>Join or Create a Team</h2>
-          <p>
-            Find a team to join or create your own team to play with others.
-          </p>
+          <Link to="/posts">
+            <p>
+              Find a team to join or create your own team to play with others.
+            </p>
+          </Link>
           {/* </section><button style={styles.button}>Join a Team</button> */}
         </section>
         </RetroTitle>
