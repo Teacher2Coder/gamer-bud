@@ -13,6 +13,9 @@ import BuddySearchPlatform from "./pages/BuddySearchPlatform";
 import BuddySearchGame from "./pages/BuddySearchGames";
 import BuddyPost from "./pages/BuddyPost";
 import FindBuddies from "./pages/FindBuddies";
+import GameLibrary from "./pages/GameLibrary";
+import GameLibraryPlatform from "./pages/GameLibraryPlatform";
+import GameLibraryGame from "./pages/GameLibraryGame";
 
 
 const router = createBrowserRouter([
@@ -57,6 +60,18 @@ const router = createBrowserRouter([
       {
         path: '/find-a-buddy',
         element: <FindBuddies />
+      },
+      {
+        path: '/gamelibrary',
+        element: <GameLibrary />
+      },
+      {
+        path: '/gamelibrary/platform/:platformKind',
+        element: <GameLibraryPlatform />
+      },
+      {
+        path: '/gamelibrary/games/:gameName',
+        element: <GameLibraryGame />
       }
     ],
   },

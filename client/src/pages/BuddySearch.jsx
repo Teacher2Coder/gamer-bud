@@ -4,7 +4,6 @@ import { QUERY_POSTS } from '../utils/queries';
 import { Container } from '@chakra-ui/react'
 import BuddySearchParams from '../components/BuddySearchParams'
 
-
 const BuddySearch = () => {
   const { loading, data } = useQuery(QUERY_POSTS);
   const posts = data?.posts || [];
