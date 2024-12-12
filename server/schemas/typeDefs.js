@@ -2,10 +2,8 @@ const typeDefs = `
   type User {
     _id: ID
     username: String!
-    email: String!
     password: String!
-    status: String!
-    profilePicture: String!
+    status: String
     games: [String!]
   }
 
@@ -21,12 +19,13 @@ const typeDefs = `
   }
 
   type Auth {
-    token: ID
+    token: ID!
     user: User
   }
 
   type Query {
-    user: User
+    user(username: String!): User
+    me: User
     posts: [Post]
     platforms(platformKind: String!): [Post]
     gamePosts(gameName: String!): [Post]
@@ -35,12 +34,11 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    updateUser(username: String!, email: String!, password: String!): User
-    login(email: String!, password: String!): Auth
+    addUser(username: String!, password: String!): Auth
+    login(username: String!, password: String!): Auth
     addPost(author: String!, game: String!, platform: String!, description: String!, playersNeeded: String!): Post
-    addGame(userId: ID!, game: String!): User
-    removeGame(userId: ID!, game: String!): User
+    addGame(game: String!): User
+    removeGame(game: String!): User
   }
 `;
 

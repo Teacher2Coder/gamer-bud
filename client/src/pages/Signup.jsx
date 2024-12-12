@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
+import { useMutation } from '@apollo/client';
+import { ADD_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 
 function SignUpPage() {
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: '',
@@ -12,8 +15,10 @@ function SignUpPage() {
 
   const [errorMessage, setErrorMessage] = useState('');
 
+  const [addUser, { error, data }] = useMutation(ADD_USER);
 
-  function handleSignUpSubmit(event) {
+
+  const handleSignUpSubmit = async (event) => {
     event.preventDefault();
 
     const { username, password, confirmPassword } = formData;
@@ -24,20 +29,25 @@ function SignUpPage() {
       return;
     }
 
-
-    const userCredentials = { username, password };
-    localStorage.setItem('userCredentials', JSON.stringify(userCredentials));
-
-    alert('Account created');
-    navigate('/login');
+    try {
+      const { data } = await addUser({
+        variables: { username, password }
+      });
+      Auth.login(data.addUser.token);
+    } catch (err) {
+      console.error(err)
+      setErrorMessage('Something went wrong...')
+    }
+    alert('Account created successfully');
   }
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
+
+    setFormData({
+      ...formData,
       [name]: value
-    }));
+    });
   }
 
   return (
@@ -85,7 +95,11 @@ function SignUpPage() {
 
       <p>
         Already have an account? 
-        <button onClick={() => navigate('/login')}>Login</button>
+        <Link to='/login'>
+          <Button>
+            Go to Login
+          </Button>
+        </Link>
       </p>
     </div>
   );

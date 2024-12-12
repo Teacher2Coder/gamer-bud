@@ -10,7 +10,7 @@ const PreviewGames = ({ games }) => {
 
   const { loading, data } = useQuery(QUERY_MY_GAMES)
 
-  const gameArray = data?.userGames.games || ['Call of Duty: Black Ops', 'Madden NFL 11'];
+  const gameArray = data?.userGames.games || [];
   console.log(gameArray);
 
   const [addGame, { error }] = useMutation(ADD_GAME);
@@ -23,7 +23,7 @@ const PreviewGames = ({ games }) => {
 
     try {
       const { data } = await addGame({
-        variables: { userId: 'something', game: e.target.value }
+        variables: { game: e.target.value }
       })
     } catch (err) {
       console.error(err);
@@ -37,7 +37,7 @@ const PreviewGames = ({ games }) => {
 
     try {
       const { data } = await removeGame({
-        variables: { userId: 'something', game: e.target.value }
+        variables: { game: e.target.value }
       })
     } catch (err) {
       console.error(err);
