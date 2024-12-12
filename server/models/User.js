@@ -22,11 +22,9 @@ const userSchema = new Schema({
   },
   status: {
     type: String,
-    required: true,
   },
   profilePicture: {
     type: String,
-    required: true
   },
   xboxTag: {
     type: String,

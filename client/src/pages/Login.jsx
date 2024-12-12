@@ -1,32 +1,29 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { LOGIN } from '../utils/queries'
+import { useMutation } from '@apollo/client';
 
 function LoginPage() {
+  const [loginUser, { error }] = useMutation(LOGIN)
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   });
 
   const [errorMessage, setErrorMessage] = useState('');
 
-  function handleLoginSubmit(event) {
+  async function handleLoginSubmit(event) {
     event.preventDefault();
-    const { username, password } = formData;
-
-    const savedCredentials = JSON.parse(localStorage.getItem('userCredentials'));
-
-
-    if (savedCredentials && savedCredentials.username === username && savedCredentials.password === password) {
-      const user = { name: '', email: '', username, profilePicture: '' };
-      localStorage.setItem('userProfile', JSON.stringify(user));
-      localStorage.setItem('authToken', 'your-auth-token');
-      setErrorMessage('');
-      alert('Successful Login');
+    try {
+      const { email, password } = formData
+      const response = await loginUser({ variables: { email, password } })
+      console.log(response)
+      localStorage.setItem("id_token", response.data.login.token)
       navigate('/profile');
-    } else {
-      setErrorMessage('Login failed :(');
+    } catch (err) {
+      setErrorMessage(err)
     }
   }
 
@@ -44,12 +41,12 @@ function LoginPage() {
 
       <form onSubmit={handleLoginSubmit}>
         <div className="form">
-          <label htmlFor="login-username">Username</label>
+          <label htmlFor="login-email">Email</label>
           <input
             type="text"
-            id="login-username"
-            name="username"
-            value={formData.username}
+            id="login-email"
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
             required
           />

@@ -14,8 +14,12 @@ const Profile = () => {
       profilePicture: ''
     });
   }, []);
-  const userData = data?.me;
-  setProfile(userData);
+  const userData = data?.user;
+  console.log(data)
+  useEffect(() => {
+    if(!userData) return
+    setProfile(userData);
+  }, [userData])
 
   const navigate = useNavigate();
 
