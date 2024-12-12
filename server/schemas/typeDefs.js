@@ -2,9 +2,17 @@ const typeDefs = `
   type User {
     _id: ID
     username: String!
+    email: String!
     password: String!
-    status: String
-    games: [String!]
+    bio: String
+    xboxTag: String
+    psTag: String
+    nintendoTag: String
+    twitchTag: String
+    steamTag: String
+    appleTag: String
+    galaxyTag: String
+    games: [String]
   }
 
   type Post {
@@ -35,6 +43,7 @@ const typeDefs = `
 
   type Mutation {
     addUser(username: String!, password: String!): Auth
+    editUser(bio: String, xboxTag: String, psTag: String, nintendoTag: String, twitchTag: String, steamTag: String, appleTag: String, galaxyTag: String): User
     login(username: String!, password: String!): Auth
     addPost(author: String!, game: String!, platform: String!, description: String!, playersNeeded: String!): Post
     addGame(game: String!): User

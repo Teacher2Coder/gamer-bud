@@ -1,6 +1,7 @@
 import RetroTitle from "../components/RetroTitle";
 import { Link } from 'react-router-dom';
 import "../styles/RetroButtons.css";
+import EditProfileModal from "../components/EditProfileModal";
 
 
 const Home = () => {
@@ -29,6 +30,8 @@ const Home = () => {
         </section>
         </RetroTitle>
       </main>
+
+      <EditProfileModal />
 
     </div>
   );

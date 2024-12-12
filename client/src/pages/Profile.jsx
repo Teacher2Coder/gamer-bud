@@ -2,6 +2,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { QUERY_ME, QUERY_USER } from '../utils/queries';
 import { useQuery } from '@apollo/client';
 import Auth from '../utils/auth';
+import EditProfileModal from '../components/EditProfileModal';
 
 
 const Profile = () => {
@@ -42,6 +43,9 @@ const Profile = () => {
       </div>
       <div>
         <p>User data will be displayed here!!!!</p>
+      </div>
+      <div>
+        <EditProfileModal />
       </div>
     </div>
   )
