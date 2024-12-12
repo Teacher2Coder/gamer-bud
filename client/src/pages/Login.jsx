@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
+import { useNavigate } from 'react-router-dom';
+import '../styles/Login.css';
 
 
 function LoginPage() {
