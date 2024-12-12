@@ -1,7 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { UPDATE_ME } from '../utils/queries';
+import { useMutation } from '@apollo/client';
+
 
 const EditProfile = () => {
+
+    const [updateUser, { error }] = useMutation(UPDATE_ME)
+
     const [profileData, setProfileData] = useState({
         username: '',
         email: '',
@@ -12,7 +18,6 @@ const EditProfile = () => {
     const [selectedImage, setSelectedImage] = useState(null);
 
     useEffect(() => {
-        //API ROUTING NEEDED
         setProfileData({
             username: '',
             email: '',
@@ -44,11 +49,10 @@ const EditProfile = () => {
 
     const handleSaveChanges = async (e) => {
         e.preventDefault();
-
+        
         try {
-            // Simulate an API call
             console.log('Saving profile data...', profileData);
-
+            updateUser({variables: profileData})
             setTimeout(() => {
                 console.log('Profile data saved!');
                 navigate('/profile');

@@ -7,11 +7,15 @@ import Auth from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 
+import { LOGIN } from '../utils/queries'
+import { useMutation } from '@apollo/client';
 
 function LoginPage() {
+  const [loginUser, { error }] = useMutation(LOGIN)
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: ''
   });
 
@@ -20,6 +24,7 @@ function LoginPage() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLoginSubmit = async (event) => {
+  async function handleLoginSubmit(event) {
     event.preventDefault();
 
     console.log(formData);
@@ -39,6 +44,15 @@ function LoginPage() {
       username: '',
       password: ''
     });
+    try {
+      const { email, password } = formData
+      const response = await loginUser({ variables: { email, password } })
+      console.log(response)
+      localStorage.setItem("id_token", response.data.login.token)
+      navigate('/profile');
+    } catch (err) {
+      setErrorMessage(err)
+    }
   }
 
   function handleInputChange(event) {
@@ -55,12 +69,12 @@ function LoginPage() {
 
       <form onSubmit={handleLoginSubmit}>
         <div className="form">
-          <label htmlFor="login-username">Username</label>
+          <label htmlFor="login-email">Email</label>
           <input
             type="text"
-            id="login-username"
-            name="username"
-            value={formData.username}
+            id="login-email"
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
             required
           />

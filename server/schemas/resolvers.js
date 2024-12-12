@@ -5,7 +5,9 @@ const resolvers = {
   Query: {
     user: async (parent, { username }) => {
       if (context.user) {
-        const user = await User.findOne({ username: username });
+        console.log(context.user)
+        const user = await User.findById(context.user._id);
+       // const user = await User.findOne({ username: username });
         return user;
       }
     },

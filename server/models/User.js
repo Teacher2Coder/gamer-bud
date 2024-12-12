@@ -21,6 +21,27 @@ const userSchema = new Schema({
   profilePicture: {
     type: String,
   },
+  xboxTag: {
+    type: String,
+  },
+  psTag: {
+    type: String,
+  },
+  nintendoTag: {
+    type: String,
+  },
+  twitchTag: {
+    type: String,
+  },
+  steamTag: {
+    type: String,
+  },
+  appleTag: {
+    type: String,
+  },
+  galaxyTag: {
+    type: String,
+  },
   games: [
     {
       type: String
