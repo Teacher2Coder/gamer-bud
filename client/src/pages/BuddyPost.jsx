@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { Card } from '@chakra-ui/react';
+import '../styles/BuddyPost.css';
 
 import { QUERY_SINGLE_POST } from "../utils/queries";
 
@@ -21,7 +22,7 @@ const BuddyPost = () => {
 
   return (
     <div>
-      <Card.Root width='75%' margin='0 auto'>
+      <Card.Root width='75%' margin='0 auto' backgroundColor='black'>
         <Card.Body>
           {
             post.active && (
@@ -34,10 +35,27 @@ const BuddyPost = () => {
             )
           }
           <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around'}}>
-            <h4 style={{ width: '45%', textAlign: 'center' }}>Gamer: {post.author}</h4>
-            <h5 style={{ width: '45%', textAlign: 'center' }}>Game: {post.game}</h5>
-            <h5 style={{ width: '45%', textAlign: 'center' }}>Platform: {post.platform}</h5>
-            <h5 style={{ width: '45%', textAlign: 'center' }}>Players Needed: {post.playersNeeded}</h5>
+            <h4 style={{ width: '45%', textAlign: 'center' }}>
+              Gamer:
+              <Link to='/'>
+                {post.author}
+              </Link>
+            </h4>
+            <h5 style={{ width: '45%', textAlign: 'center' }}>
+              Game: 
+              <Link to={`/posts/games/${post.game}`}>
+                {post.game}
+              </Link>
+            </h5>
+            <h5 style={{ width: '45%', textAlign: 'center' }}>
+              Platform: 
+              <Link to={`/posts/platforms/${post.platform}`}>
+                {post.platform}
+              </Link>
+            </h5>
+            <h5 style={{ width: '45%', textAlign: 'center' }}>
+              Players Needed: {post.playersNeeded}
+            </h5>
           </div>
           <h4 style={{ marginTop: '20px', textAlign: 'center' }}>More Details:</h4>
           <p>{post.description}</p>

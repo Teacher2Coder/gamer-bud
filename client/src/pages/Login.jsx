@@ -1,5 +1,12 @@
+import { useMutation } from '@apollo/client';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
+import '../styles/Login.css';
+
 import { LOGIN } from '../utils/queries'
 import { useMutation } from '@apollo/client';
 
@@ -12,10 +19,31 @@ function LoginPage() {
     password: ''
   });
 
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
   const [errorMessage, setErrorMessage] = useState('');
 
+  const handleLoginSubmit = async (event) => {
   async function handleLoginSubmit(event) {
     event.preventDefault();
+
+    console.log(formData);
+    
+    try {
+      const { data } = await login({
+        variables: { ...formData }
+      });
+
+      Auth.login(data.login.token);
+    } catch(err) {
+      console.error(err);
+      setErrorMessage('Login failed :(')
+    }
+
+    setFormData({
+      username: '',
+      password: ''
+    });
     try {
       const { email, password } = formData
       const response = await loginUser({ variables: { email, password } })
@@ -29,10 +57,10 @@ function LoginPage() {
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData({
+      ...formData,
       [name]: value
-    }));
+    });
   }
 
   return (
@@ -66,6 +94,14 @@ function LoginPage() {
       </form>
 
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      <p>
+        Don't have an account? 
+        <Link to='/signup'>
+          <Button>
+            Go to signup
+          </Button>
+        </Link>
+      </p>
     </div>
   );
 }

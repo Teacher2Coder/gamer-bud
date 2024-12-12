@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import PreviewGames from '../components/PreviewGames';
+import { Button } from '@chakra-ui/react';
 // import './GameLibrary.css';
 // const { REACT_APP_RAWG_KEY } = process.env;
 
@@ -61,43 +62,28 @@ const GameLibrary = () => {
 
   return (
     <div className="game-library">
-      <h1>Game Library</h1>
-      <form onSubmit={handleFormSubmit}>
-        <div>
-          <label>Seach for a game</label>
+      <h1 style={{ textAlign: 'center' }}>Game Library</h1>
+      <form className='game-search' onSubmit={handleFormSubmit} >
+        <div style={{ width: '45%' }}>
           <input
             name='search'
-            placeholder='Search...'
+            placeholder='Search for games...'
+            className='game-search-bar'
             value = {formState.search}
-            style = {{ color: 'white' }}
+            style = {{ color: 'white', padding: '5px', backgroundColor: 'black', marginRight: '10px' }}
             onChange={handleFormChange}
           ></input>
         </div>
-        <button type='submit'>Search</button>
+        <Button className='search-button' backgroundColor='blue' color='white' type='submit'>Search</Button>
       </form>
-      <div>
-        <button onClick={previousPage}>Previous page</button>
-        <button onClick={nextPage}>Next Page</button>
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', marginBottom: '20px' }}>
+        <Button backgroundColor='blue' color='white' onClick={previousPage}>Previous page</Button>
+        <Button backgroundColor='blue' color='white' onClick={nextPage}>Next Page</Button>
       </div>
-      <div className="game-grid">
-        {games.map((game) => (
-          <div key={game.id} className="game-card">
-            <Link to={`/posts/games/${game.name}`}>
-              <img src={game.background_image} alt={game.name} className="game-cover" />
-            </Link>
-            <h2>{game.name}</h2>
-            <h3>Platforms</h3>
-            {game.platforms.map((platformName) => (
-              <div key={platformName.id} >
-                <p style={{color: 'black'}}>{platformName.platform.name}</p>
-              </div>
-            ))}
-          </div>
-        ))}
-      </div>
-      <div>
-        <button onClick={previousPage}>Previous page</button>
-        <button onClick={nextPage}>Next Page</button>
+      <PreviewGames games={games} />
+      <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
+        <Button backgroundColor='blue' color='white' onClick={previousPage}>Previous page</Button>
+        <Button backgroundColor='blue' color='white' onClick={nextPage}>Next Page</Button>
       </div>
     </div>
   )

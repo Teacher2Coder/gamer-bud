@@ -1,15 +1,18 @@
 import React from 'react';
 import Navigation from './Navigation';
+import '../styles/Header.css';
 
 // This is our Header component. It will contain the title of our app and the Navigation component.
 
 const Header = () => {
     return (
-        <header>
-            <h1>GamerBud</h1>
-            <div className="search-bar">
-                <imput type="text" placeholder="Search..." />
-                <button type="submit">Search</button>
+        <header className="header-container">
+            <div className="header-left">
+                <h1>GamerBud</h1>
+                <div className="search-bar">
+                    <imput type="text" placeholder="Search..." />
+                    <button type="submit">Search</button>
+                </div>
             </div>
             <Navigation />
         </header>

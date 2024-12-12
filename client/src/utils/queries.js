@@ -62,27 +62,29 @@ export const QUERY_SINGLE_POST = gql`
 
 
 export const QUERY_ME = gql`
-  query getUser {
-    user {
-    email
-    password
-    username
+  {
+    me {
+      _id
+      username
+      status
+    }
   }
-  }`
-
-export const UPDATE_ME = gql`
-mutation UpdateUser($username: String!, $email: String!) {
-  updateUser(username: $username, email: $email) {
-    _id
-    username
-    email
-  }
-}
 `
 
-export const LOGIN = gql`
-mutation Login($email: String!, $password: String!) {
-  login(email: $email, password: $password) {
-    token
+export const QUERY_MY_GAMES = gql`
+  query myGames {
+    userGames {
+      games
+    }
   }
-}`
+`
+
+export const QUERY_USER = gql`
+  query user($username: String!) {
+    user(username: $username) {
+      _id
+      username
+      status
+    }
+  }
+`
