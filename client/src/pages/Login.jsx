@@ -1,41 +1,50 @@
+import { useMutation } from '@apollo/client';
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
+import { LOGIN_USER } from '../utils/mutations';
+import Auth from '../utils/auth';
+
 
 function LoginPage() {
-  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     username: '',
     password: ''
   });
 
+  const [login, { error, data }] = useMutation(LOGIN_USER);
+
   const [errorMessage, setErrorMessage] = useState('');
 
-  function handleLoginSubmit(event) {
+  const handleLoginSubmit = async (event) => {
     event.preventDefault();
-    const { username, password } = formData;
 
-    const savedCredentials = JSON.parse(localStorage.getItem('userCredentials'));
+    console.log(formData);
+    
+    try {
+      const { data } = await login({
+        variables: { ...formData }
+      });
 
-
-    if (savedCredentials && savedCredentials.username === username && savedCredentials.password === password) {
-      const user = { name: '', email: '', username, profilePicture: '' };
-      localStorage.setItem('userProfile', JSON.stringify(user));
-      localStorage.setItem('authToken', 'your-auth-token');
-      setErrorMessage('');
-      alert('Successful Login');
-      navigate('/profile');
-    } else {
-      setErrorMessage('Login failed :(');
+      Auth.login(data.login.token);
+    } catch(err) {
+      console.error(err);
+      setErrorMessage('Login failed :(')
     }
+
+    setFormData({
+      username: '',
+      password: ''
+    });
   }
 
   function handleInputChange(event) {
     const { name, value } = event.target;
-    setFormData((prevData) => ({
-      ...prevData,
+    setFormData({
+      ...formData,
       [name]: value
-    }));
+    });
   }
 
   return (
@@ -69,6 +78,14 @@ function LoginPage() {
       </form>
 
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      <p>
+        Don't have an account? 
+        <Link to='/signup'>
+          <Button>
+            Go to signup
+          </Button>
+        </Link>
+      </p>
     </div>
   );
 }

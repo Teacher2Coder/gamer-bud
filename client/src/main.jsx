@@ -7,7 +7,6 @@ import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import EditProfile from "./pages/EditProfile";
 import BuddySearch from "./pages/BuddySearch";
 import BuddySearchPlatform from "./pages/BuddySearchPlatform";
 import BuddySearchGame from "./pages/BuddySearchGames";
@@ -33,17 +32,16 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/profile",
+        path: "/myprofile",
         element: <Profile />,
       },
       {
-        path: "/Signup",
-        element: <SignUpPage />,
+        path: '/profile/:userParam',
+        element: <Profile />
       },
       {
-
-        path: "/editprofile",
-        element: <EditProfile />,
+        path: "/signup",
+        element: <SignUpPage />,
       },
       {
         path: '/posts',
