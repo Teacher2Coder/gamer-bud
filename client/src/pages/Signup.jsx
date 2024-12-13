@@ -10,6 +10,7 @@ function SignUpPage() {
 
   const [formData, setFormData] = useState({
     username: '',
+    email: '',
     password: '',
     confirmPassword: ''
   });
@@ -22,7 +23,7 @@ function SignUpPage() {
   const handleSignUpSubmit = async (event) => {
     event.preventDefault();
 
-    const { username, password, confirmPassword } = formData;
+    const { username,email, password, confirmPassword } = formData;
 
 
     if (password !== confirmPassword) {
@@ -32,7 +33,7 @@ function SignUpPage() {
 
     try {
       const { data } = await addUser({
-        variables: { username, password }
+        variables: { username, email, password }
       });
       Auth.login(data.addUser.token);
     } catch (err) {
@@ -63,6 +64,17 @@ function SignUpPage() {
             id="signup-username"
             name="username"
             value={formData.username}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="form">
+          <label htmlFor="signup-email">Email</label>
+          <input
+            type="text"
+            id="signup-email"
+            name="email"
+            value={formData.email}
             onChange={handleInputChange}
             required
           />

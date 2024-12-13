@@ -14,18 +14,16 @@ const Profile = () => {
 
   const user = data?.user || {};
 
-  if (
-    Auth.loggedIn() &&
-    Auth.getProfile().authenticatedPerson.username === userParam
-  ) {
-    return <Navigate to='/myprofile' />
-  }
 
-  if (loading) {
-    return (
-      <h2>Loading...</h2>
-    )
-  }
+  const handleEditProfile = () => {
+    navigate('/editprofile');
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem('authToken');
+    navigate('/login');
+  };
+
 
   return (
     <div>

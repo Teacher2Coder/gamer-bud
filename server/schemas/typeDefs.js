@@ -42,11 +42,12 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
     editUser(bio: String, xboxTag: String, psTag: String, nintendoTag: String, twitchTag: String, steamTag: String, appleTag: String, galaxyTag: String): User
-    login(username: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     addPost(author: String!, game: String!, platform: String!, description: String!, playersNeeded: String!): Post
     addGame(game: String!): User
+    updateUser(username: String!, email: String!): User
     removeGame(game: String!): User
   }
 `;

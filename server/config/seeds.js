@@ -12,18 +12,22 @@ db.once("open", async () => {
     {
       username: "EvilKoala",
       password: "password12345",
+      email: "EvilKoala@getMaxListeners.com",
       games: ['Call of Duty: Black Ops 6', 'Madden NFL 25']
     },
     {
       username: "EvilTiger",
+      email: "Eviltiger@gmail.com",
       password: "password12345",
     },
     {
       username: "EvilCat",
+      email: "EvilCat@gmail.com",
       password: "password12345",
     },
     {
       username: "EvilDuck",
+      email: "EvilDuck@gmail.com",
       password: "password12345",
     },
   ])
