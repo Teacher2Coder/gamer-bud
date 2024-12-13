@@ -8,10 +8,6 @@ const Header = () => {
         <header className="header-container">
             <div className="header-left">
                 <h1>GamerBud</h1>
-                <div className="search-bar">
-                    <input type="text" placeholder="Search..." />
-                    <button type="submit">Search</button>
-                </div>
             </div>
             <Navigation />
         </header>
