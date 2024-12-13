@@ -11,6 +11,7 @@ import {
   DialogTrigger,
 } from '../components/ui/dialog';
 import { EDIT_USER } from '../utils/mutations';
+import { QUERY_ME } from '../utils/queries';
 
 const EditProfileModal = (user) => {
   
@@ -25,7 +26,12 @@ const EditProfileModal = (user) => {
     galaxyTag: user.galaxyTag,
   });
 
-  const [editUser, { editError }] = useMutation(EDIT_USER);
+  const [editUser, { editError }] = useMutation(EDIT_USER, {
+    refetchQueries: [
+      QUERY_ME,
+      'me'
+    ]
+  });
 
   const handleFormChange = (e) => {
     const { name, value } = e.target;

@@ -1,4 +1,3 @@
-import React from 'react';
 import Navigation from './Navigation';
 import '../styles/Header.css';
 
@@ -10,7 +9,7 @@ const Header = () => {
             <div className="header-left">
                 <h1>GamerBud</h1>
                 <div className="search-bar">
-                    <imput type="text" placeholder="Search..." />
+                    <input type="text" placeholder="Search..." />
                     <button type="submit">Search</button>
                 </div>
             </div>

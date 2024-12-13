@@ -66,7 +66,15 @@ export const QUERY_ME = gql`
     me {
       _id
       username
-      status
+      bio
+      xboxTag
+      psTag
+      nintendoTag
+      twitchTag
+      steamTag
+      appleTag
+      galaxyTag
+      games
     }
   }
 `
@@ -84,7 +92,15 @@ export const QUERY_USER = gql`
     user(username: $username) {
       _id
       username
-      status
+      bio
+      xboxTag
+      psTag
+      nintendoTag
+      twitchTag
+      steamTag
+      appleTag
+      galaxyTag
+      games
     }
   }
 `

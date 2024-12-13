@@ -37,7 +37,7 @@ const BuddyPost = () => {
           <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-around'}}>
             <h4 style={{ width: '45%', textAlign: 'center' }}>
               Gamer:
-              <Link to='/'>
+              <Link to={`/profile/${post.author}`}>
                 {post.author}
               </Link>
             </h4>
