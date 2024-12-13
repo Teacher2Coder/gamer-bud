@@ -1,8 +1,6 @@
 import RetroTitle from "../components/RetroTitle";
 import { Link } from 'react-router-dom';
 import "../styles/RetroButtons.css";
-import EditProfileModal from "../components/EditProfileModal";
-
 
 const Home = () => {
   return (
@@ -20,19 +18,13 @@ const Home = () => {
             </Link>
           </div>
         <section>
-          <h2>Join or Create a Team</h2>
           <Link to="/posts">
-            <p>
-              Find a team to join or create your own team to play with others.
-            </p>
+            <button className="retro-button">Find a buddy!</button>
           </Link>
           {/* </section><button style={styles.button}>Join a Team</button> */}
         </section>
         </RetroTitle>
       </main>
-
-      <EditProfileModal />
-
     </div>
   );
 };

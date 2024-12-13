@@ -38,10 +38,17 @@ const EditProfileModal = (user) => {
     setFormState({...formState, [name]: value});
   }
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    console.log(formState)
+    try {
+      const { data } = await editUser({
+        variables: {...formState}
+      })
+      window.location.reload();
+    } catch (err) {
+      console.error(err);
+    }
   }
   
   return (

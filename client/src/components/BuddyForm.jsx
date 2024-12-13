@@ -4,9 +4,8 @@ import { Card, Button } from '@chakra-ui/react';
 import { ADD_POST } from '../utils/mutations';
 import { QUERY_POSTS, QUERY_MY_GAMES } from '../utils/queries';
 
-const BuddyForm = (user) => {
+const BuddyForm = () => {
   const [formState, setFormState] = useState({
-    author: user.username,
     game: '',
     platform: '',
     description: '',
@@ -16,7 +15,8 @@ const BuddyForm = (user) => {
 
   const { loading, data } = useQuery(QUERY_MY_GAMES);
 
-  const games = data?.userGames.games || ['Call of Duty: Black Ops 6'];
+  const games = data?.userGames.games || [];
+
   const platforms = [
     'Xbox Series X/S',
     'PlayStation 5',
@@ -64,16 +64,6 @@ const BuddyForm = (user) => {
       <Card.Root width='85%' margin='0 auto'>
         <Card.Body>
           <form onSubmit={handleFormSubmit}>
-            <div>
-              <label>Post Author</label>
-              <input
-                name='author'
-                placeholder='Your name here'
-                value = {formState.author}
-                style = {{ color: 'white' }}
-                onChange={handleFormChange}
-              ></input>
-            </div>
             <div className='form-group'>
               <div className='form-item'>
                 <label>What game are you playing?</label>

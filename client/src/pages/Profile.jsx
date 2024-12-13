@@ -1,7 +1,6 @@
-import { Navigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { QUERY_USER } from '../utils/queries';
 import { useQuery } from '@apollo/client';
-import Auth from '../utils/auth';
 
 
 const Profile = () => {
@@ -14,16 +13,9 @@ const Profile = () => {
 
   const user = data?.user || {};
 
-
-  const handleEditProfile = () => {
-    navigate('/editprofile');
-  };
-
-  const handleSignOut = () => {
-    localStorage.removeItem('authToken');
-    navigate('/login');
-  };
-
+  if (loading) {
+    return <h2>Loading...</h2>
+  }
 
   return (
     <div>
