@@ -14,7 +14,7 @@ const resolvers = {
       throw AuthenticationError;
     },
     posts: async (parent, args, context) => {
-      const posts = await Post.find();
+      const posts = await Post.find({ active: true }).sort({ date: -1 });
       return posts;
     },
     post: async (parent, { postId }) => {
@@ -41,7 +41,7 @@ const resolvers = {
 
       return { token, user };
     },
-    editUser: async (parent, context, { bio, xboxTag, psTag, nintendoTag, twitchTag, steamTag, appleTag, galaxyTag }) => {
+    editUser: async (parent, { bio, xboxTag, psTag, nintendoTag, twitchTag, steamTag, appleTag, galaxyTag }, context) => {
       const user = await User.findOneAndUpdate(
         { _id: context.user._id }, 
         {

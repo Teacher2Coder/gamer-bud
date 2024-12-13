@@ -1,6 +1,6 @@
 # GamerBud
 GamerBud is a social, player seeking, game informative application that provides users with the ability to search for their favorite games, add their gamertags, and post on game pages. The user can make posts about the game developers, their favorite levels, or even invite other users to join a multi-player game with them. The users must first create an account, and are then assigned a webtoken so they can access the website and their personal profiles.  
- ### Link to deployed application
+### Link to deployed application
  
 ## Table of Contents
 * [Installation](#installation)

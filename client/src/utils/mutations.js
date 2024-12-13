@@ -57,8 +57,8 @@ export const REMOVE_GAME = gql`
 `;
 
 export const EDIT_USER = gql`
-  mutation editUser($bio: String!, $xboxtag: String!, $psTag: String!, $nintendoTag: String!, $twitchTag: String!, $steamTag: String!, $appleTag: String!, $galaxyTag: String!) {
-    editUser(bio: $bio, xboxTag: $xboxTag, psTag: $psTag, nintendoTag: $nintendoTag, twitchTag: $twitchTag, appleTag: $appleTag, galaxyTag: $galaxyTag) {
+  mutation editUser($bio: String, $xboxTag: String, $psTag: String, $nintendoTag: String, $twitchTag: String, $steamTag: String, $appleTag: String, $galaxyTag: String) {
+    editUser(bio: $bio, xboxTag: $xboxTag, psTag: $psTag, nintendoTag: $nintendoTag, twitchTag: $twitchTag, steamTag: $steamTag, appleTag: $appleTag, galaxyTag: $galaxyTag) {
       bio
       xboxTag
       psTag

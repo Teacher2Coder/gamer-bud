@@ -48,10 +48,7 @@ const BuddyPost = () => {
               </Link>
             </h5>
             <h5 style={{ width: '45%', textAlign: 'center' }}>
-              Platform: 
-              <Link to={`/posts/platforms/${post.platform}`}>
-                {post.platform}
-              </Link>
+              Platform: {post.platform}
             </h5>
             <h5 style={{ width: '45%', textAlign: 'center' }}>
               Players Needed: {post.playersNeeded}
