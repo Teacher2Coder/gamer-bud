@@ -45,6 +45,22 @@ const resolvers = {
 
       return { token, user };
     },
+    editUser: async (parent, context, { bio, xboxTag, psTag, nintendoTag, twitchTag, steamTag, appleTag, galaxyTag }) => {
+      const user = await User.findOneAndUpdate(
+        { _id: context.user._id }, 
+        {
+          bio: bio,
+          xboxTag: xboxTag,
+          psTag: psTag,
+          nintendoTag: nintendoTag,
+          twitchTag: twitchTag,
+          steamTag: steamTag,
+          appleTag: appleTag,
+          galaxyTag: galaxyTag
+        }
+      )
+      return user;
+    },
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
 

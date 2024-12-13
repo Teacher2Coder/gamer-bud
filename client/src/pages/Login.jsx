@@ -7,11 +7,8 @@ import Auth from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Login.css';
 
-import { LOGIN } from '../utils/queries'
-import { useMutation } from '@apollo/client';
 
 function LoginPage() {
-  const [loginUser, { error }] = useMutation(LOGIN)
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -24,7 +21,6 @@ function LoginPage() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleLoginSubmit = async (event) => {
-  async function handleLoginSubmit(event) {
     event.preventDefault();
 
     console.log(formData);

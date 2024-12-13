@@ -10,7 +10,7 @@ export const LOGIN_USER = gql`
       }
     }
   }
-`
+`;
 
 export const ADD_USER = gql`
   mutation addUser($username: String!, $password: String!) {
@@ -22,7 +22,7 @@ export const ADD_USER = gql`
       }
     }
   }
-`
+`;
 
 export const ADD_POST = gql`
   mutation addPost($author: String!, $game: String!, $platform: String!, $description: String!, $playersNeeded: String!) {
@@ -36,7 +36,7 @@ export const ADD_POST = gql`
       date
     }
   }
-`
+`;
 
 export const ADD_GAME = gql`
   mutation addGame($userId: ID!, $game: String!) {
@@ -44,12 +44,27 @@ export const ADD_GAME = gql`
       games
     }
   }
-`
+`;
 
-export const REMOVE_GAME =gql`
+export const REMOVE_GAME = gql`
   mutation removeGame($userId: ID!, $game: String!) {
     removeGame(userId: $userId, game: $game) {
       games
     }
   }
-`
+`;
+
+export const EDIT_USER = gql`
+  mutation editUser($bio: String!, $xboxtag: String!, $psTag: String!, $nintendoTag: String!, $twitchTag: String!, $steamTag: String!, $appleTag: String!, $galaxyTag: String!) {
+    editUser(bio: $bio, xboxTag: $xboxTag, psTag: $psTag, nintendoTag: $nintendoTag, twitchTag: $twitchTag, appleTag: $appleTag, galaxyTag: $galaxyTag) {
+      bio
+      xboxTag
+      psTag
+      nintendoTag
+      twitchTag
+      steamTag
+      appleTag
+      galaxyTag
+    }
+  }
+`;
