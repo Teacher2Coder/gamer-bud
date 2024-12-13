@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import PreviewGames from '../components/PreviewGames';
 import { Button } from '@chakra-ui/react';
 // import './GameLibrary.css';
@@ -82,6 +82,11 @@ const GameLibraryPlatform = () => {
       <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
         <Button backgroundColor='blue' color='white' onClick={previousPage}>Previous page</Button>
         <Button backgroundColor='blue' color='white' onClick={nextPage}>Next Page</Button>
+      </div>
+      <div>
+        <p>
+          All Video Game data provided by <Link to='https://rawg.io/'>RAWG API</Link>
+        </p>
       </div>
     </div>
   )
