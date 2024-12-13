@@ -3,10 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { UPDATE_ME } from '../utils/queries';
 import { useMutation } from '@apollo/client';
 
-
 const EditProfile = () => {
-
-    const [updateUser, { error }] = useMutation(UPDATE_ME)
+    const [updateUser] = useMutation(UPDATE_ME)
 
     const [profileData, setProfileData] = useState({
         username: '',

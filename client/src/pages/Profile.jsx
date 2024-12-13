@@ -1,55 +1,70 @@
-import { Navigate, useParams } from 'react-router-dom';
-import { QUERY_ME, QUERY_USER } from '../utils/queries';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { QUERY_ME } from '../utils/queries';
 import { useQuery } from '@apollo/client';
-import Auth from '../utils/auth';
-import EditProfileModal from '../components/EditProfileModal';
-
-
 const Profile = () => {
-  
-  const { username: userParam } = useParams();
+  const [profile, setProfile] = useState(null);
+  const { data } = useQuery(QUERY_ME)
+  useEffect(() => {
 
-  const { loading, data } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam }
-  });
+    setProfile({
+      username: '',
+      email: '',
+      status: '',
+      profilePicture: ''
+    });
+  }, []);
+  const userData = data?.user;
+  console.log(data)
+  useEffect(() => {
+    if(!userData) return
+    setProfile(userData);
+  }, [userData])
 
-  const user = data?.me || data?.user || {};
+  const navigate = useNavigate();
 
-  if (
-    Auth.loggedIn() &&
-    Auth.getProfile().authenticatedPerson.username === userParam
-  ) {
-    return <Navigate to='/myprofile' />
-  }
+  const handleEditProfile = () => {
+    navigate('/editprofile');
+  };
 
-  if (loading) {
-    return (
-      <h2>Loading...</h2>
-    )
-  }
+  const handleSignOut = () => {
+    localStorage.removeItem('authToken');
+    navigate('/login');
+  };
 
-  if (!user?.username) {
-    return (
-      <h2>
-        You need to be logged in to see this!
-      </h2>
-    )
+  if (!profile) {
+    return <div>Loading...</div>;
   }
 
   return (
-    <div>
-      <div>
-        <h2>Now viewing {userParam ? `${user.username}'s`: `your`} profile.</h2>
-      </div>
-      <div>
-        <p>User data will be displayed here!!!!</p>
-      </div>
-      <div>
-        <EditProfileModal />
-      </div>
+    <div className="profile">
+      <h1>{profile.username}</h1>
+      <img
+        src={profile.profilePicture}
+        className="profile-picture"
+        style={{
+          width: '200px',
+          height: '200px',
+          borderRadius: '50%',
+          objectFit: 'cover',
+          margin: '20px',
+        }}
+      />
+      <p>Email: {profile.email}</p>
+      <p>Status: {profile.status}</p>
+      <button onClick={handleEditProfile}>Edit Profile</button>
+      <button onClick={handleSignOut}>Sign Out</button>
     </div>
-  )
-  
+  );
 };
+
+
+
+
+
+
+
+
+
 
 export default Profile;

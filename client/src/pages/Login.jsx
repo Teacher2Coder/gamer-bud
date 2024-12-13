@@ -1,14 +1,10 @@
-import { useMutation } from '@apollo/client';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Button } from '@chakra-ui/react';
-import { LOGIN_USER } from '../utils/mutations';
-import Auth from '../utils/auth';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Login.css';
-
+import { LOGIN } from '../utils/queries'
+import { useMutation } from '@apollo/client';
 
 function LoginPage() {
+  const [loginUser] = useMutation(LOGIN)
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -16,30 +12,11 @@ function LoginPage() {
     password: ''
   });
 
-  const [login, { error, data }] = useMutation(LOGIN_USER);
-
   const [errorMessage, setErrorMessage] = useState('');
 
-  const handleLoginSubmit = async (event) => {
+ async function handleLoginSubmit(event) {
     event.preventDefault();
 
-    console.log(formData);
-    
-    try {
-      const { data } = await login({
-        variables: { ...formData }
-      });
-
-      Auth.login(data.login.token);
-    } catch(err) {
-      console.error(err);
-      setErrorMessage('Login failed :(')
-    }
-
-    setFormData({
-      username: '',
-      password: ''
-    });
     try {
       const { email, password } = formData
       const response = await loginUser({ variables: { email, password } })
@@ -50,6 +27,7 @@ function LoginPage() {
       setErrorMessage(err)
     }
   }
+
 
   function handleInputChange(event) {
     const { name, value } = event.target;
@@ -65,7 +43,7 @@ function LoginPage() {
 
       <form onSubmit={handleLoginSubmit}>
         <div className="form">
-          <label htmlFor="login-email">Email</label>
+        <label htmlFor="login-email">Email</label>
           <input
             type="text"
             id="login-email"
@@ -90,16 +68,7 @@ function LoginPage() {
       </form>
 
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
-      <p>
-        Don't have an account? 
-        <Link to='/signup'>
-          <Button>
-            Go to signup
-          </Button>
-        </Link>
-      </p>
     </div>
   );
 }
-
 export default LoginPage;
