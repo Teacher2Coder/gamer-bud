@@ -8,7 +8,7 @@ const PreviewPost = ({posts, title}) => {
 
   return (
     <div>
-      <h3 className="text-primary">{title}</h3>
+      <h3 className="text-primary" style={{ textAlign: 'center', color: 'blue' }}>{title}</h3>
       <div>
         {posts &&
           posts.map((post) => (
@@ -18,7 +18,7 @@ const PreviewPost = ({posts, title}) => {
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
                       <h4>
                         Gamer:
-                        <Link to={`/`} style={{ marginLeft: '10px' }}>
+                        <Link to={`/profile/${post.author}`} style={{ marginLeft: '10px' }}>
                           {post.author}
                         </Link>
                       </h4>

@@ -4,11 +4,9 @@ import { Card, Button } from '@chakra-ui/react';
 import { ADD_POST } from '../utils/mutations';
 import { QUERY_POSTS, QUERY_MY_GAMES } from '../utils/queries';
 
-// Look here https://www.chakra-ui.com/docs/components/select
-
-const BuddyForm = () => {
+const BuddyForm = (user) => {
   const [formState, setFormState] = useState({
-    author: '',
+    author: user.username,
     game: '',
     platform: '',
     description: '',
