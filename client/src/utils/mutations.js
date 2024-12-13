@@ -27,8 +27,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_POST = gql`
-  mutation addPost($author: String!, $game: String!, $platform: String!, $description: String!, $playersNeeded: String!) {
-    addPost(author: $author, game: $game, platform: $platform, description: $description, playersNeeded: $playersNeeded) {
+  mutation addPost($game: String!, $platform: String!, $description: String!, $playersNeeded: String!) {
+    addPost(game: $game, platform: $platform, description: $description, playersNeeded: $playersNeeded) {
       _id
       author
       platform
@@ -41,16 +41,16 @@ export const ADD_POST = gql`
 `;
 
 export const ADD_GAME = gql`
-  mutation addGame($userId: ID!, $game: String!) {
-    addGame(userId: $userId, game: $game) {
+  mutation addGame($game: String!) {
+    addGame(game: $game) {
       games
     }
   }
 `;
 
 export const REMOVE_GAME = gql`
-  mutation removeGame($userId: ID!, $game: String!) {
-    removeGame(userId: $userId, game: $game) {
+  mutation removeGame($game: String!) {
+    removeGame(game: $game) {
       games
     }
   }

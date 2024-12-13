@@ -30,11 +30,8 @@ const PreviewPost = ({posts, title}) => {
                       </h5>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around' }}>
-                      <h5>
-                        Platform: 
-                        <Link to={`/posts/platforms/${post.platform}`} style={{ marginLeft: '10px' }}>
-                          {post.platform}
-                        </Link>
+                      <h5 style={{ marginLeft: '10px' }}>
+                        Platform: {post.platform}
                       </h5>
                       <h5>Players Needed: {post.playersNeeded}</h5>
                     </div>

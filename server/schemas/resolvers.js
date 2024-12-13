@@ -29,7 +29,7 @@ const resolvers = {
       const posts = await Post.find({ game: gameName })
       return posts;
     },
-    userGames: async (parent, context) => {
+    userGames: async (_parent, _args, context) => {
       const user = await User.findOne({ _id: context.user._id });
       return user;
     }
@@ -74,15 +74,25 @@ const resolvers = {
 
       return { token, user };
     },
-    addPost: async (parent, { author, game, platform, description, playersNeeded }) => {
-      const post = Post.create({ author, game, platform, description, playersNeeded });
-      return post;
+    addPost: async (parent, { game, platform, description, playersNeeded }, context) => {
+      try {
+        const post = await Post.create({ 
+          author: context.user.username, 
+          game, 
+          platform, 
+          description, 
+          playersNeeded 
+        });
+        return post;
+      } catch (err) {
+        console.error(err);
+      }
     },
-    addGame: async (parent, context, { game }) => {
+    addGame: async (parent, { game }, context) => {
       const user = await User.updateOne({ _id: context.user._id }, { $push: { games: game } });
       return user;
     },
-    removeGame: async (parent, context, { game }) => {
+    removeGame: async (parent, { game }, context) => {
       const user = await User.updateOne({ _id: context.user._id} , { $pull: { games: game } });
       return user;
     }

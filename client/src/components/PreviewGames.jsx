@@ -3,7 +3,7 @@ import { Card, Button } from '@chakra-ui/react';
 import { useQuery, useMutation } from '@apollo/client'
 // import the query and the mutation when ready
 import { QUERY_MY_GAMES } from '../utils/queries';
-import { ADD_GAME } from '../utils/mutations';
+import { ADD_GAME, REMOVE_GAME } from '../utils/mutations';
 
 
 const PreviewGames = ({ games }) => {
@@ -13,7 +13,18 @@ const PreviewGames = ({ games }) => {
   const gameArray = data?.userGames.games || [];
   console.log(gameArray);
 
-  const [addGame, { error }] = useMutation(ADD_GAME);
+  const [addGame, { error }] = useMutation(ADD_GAME, {
+    refetchQueries: [
+      QUERY_MY_GAMES,
+      'userGames'
+    ]
+  });
+  const [removeGame, { removeError }] = useMutation(REMOVE_GAME, {
+    refetchQueries: [
+      QUERY_MY_GAMES,
+      'userGames'
+    ]
+  });
 
   const handleAddGame = async (e) => {
     e.preventDefault();

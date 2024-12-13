@@ -11,6 +11,7 @@ const Navigation = () => {
                 <li><NavLink to ="/signup">Sign Up</NavLink></li>
                 <li><NavLink to ="/login">Login</NavLink></li>
                 <li><NavLink to ="/myprofile">Profile</NavLink></li>
+                <li><NavLink to='/posts'>Buddy Posts</NavLink></li>
                 <li><NavLink to ="/gamelibrary">Game Library</NavLink></li>
             </ul>
         </nav>
