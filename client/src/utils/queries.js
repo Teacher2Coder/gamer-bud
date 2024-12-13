@@ -62,13 +62,25 @@ export const QUERY_SINGLE_POST = gql`
 
 
 export const QUERY_ME = gql`
-  query getUser {
-    user {
-    email
-    password
-    username
+
+  {
+    me {
+      _id
+      username
+      email
+      password
+      bio
+      xboxTag
+      psTag
+      nintendoTag
+      twitchTag
+      steamTag
+      appleTag
+      galaxyTag
+      games
+    }
   }
-  }`
+`
 
 export const QUERY_MY_GAMES = gql`
   query myGames {
@@ -83,7 +95,15 @@ export const QUERY_USER = gql`
     user(username: $username) {
       _id
       username
-      status
+      bio
+      xboxTag
+      psTag
+      nintendoTag
+      twitchTag
+      steamTag
+      appleTag
+      galaxyTag
+      games
     }
   }
 `

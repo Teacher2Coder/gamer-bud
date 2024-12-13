@@ -1,4 +1,3 @@
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import '../styles/Navigation.css';
 
@@ -11,7 +10,7 @@ const Navigation = () => {
                 <li><NavLink to ="/" end>Home</NavLink></li>
                 <li><NavLink to ="/signup">Sign Up</NavLink></li>
                 <li><NavLink to ="/login">Login</NavLink></li>
-                <li><NavLink to ="/profile">Profile</NavLink></li>
+                <li><NavLink to ="/myprofile">Profile</NavLink></li>
                 <li><NavLink to ="/gamelibrary">Game Library</NavLink></li>
             </ul>
         </nav>

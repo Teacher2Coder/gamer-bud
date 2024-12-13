@@ -1,27 +1,19 @@
-import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { QUERY_ME } from '../utils/queries';
+import { Navigate, useParams } from 'react-router-dom';
+import { QUERY_USER } from '../utils/queries';
 import { useQuery } from '@apollo/client';
+import Auth from '../utils/auth';
+
+
 const Profile = () => {
-  const [profile, setProfile] = useState(null);
-  const { data } = useQuery(QUERY_ME)
-  useEffect(() => {
+  
+  const { userParam } = useParams();
 
-    setProfile({
-      username: '',
-      email: '',
-      status: '',
-      profilePicture: ''
-    });
-  }, []);
-  const userData = data?.user;
-  console.log(data)
-  useEffect(() => {
-    if(!userData) return
-    setProfile(userData);
-  }, [userData])
+  const { loading, data } = useQuery(QUERY_USER, {
+    variables: { username: userParam }
+  });
 
-  const navigate = useNavigate();
+  const user = data?.user || {};
+
 
   const handleEditProfile = () => {
     navigate('/editprofile');
@@ -32,39 +24,48 @@ const Profile = () => {
     navigate('/login');
   };
 
-  if (!profile) {
-    return <div>Loading...</div>;
-  }
 
   return (
-    <div className="profile">
-      <h1>{profile.username}</h1>
-      <img
-        src={profile.profilePicture}
-        className="profile-picture"
-        style={{
-          width: '200px',
-          height: '200px',
-          borderRadius: '50%',
-          objectFit: 'cover',
-          margin: '20px',
-        }}
-      />
-      <p>Email: {profile.email}</p>
-      <p>Status: {profile.status}</p>
-      <button onClick={handleEditProfile}>Edit Profile</button>
-      <button onClick={handleSignOut}>Sign Out</button>
+    <div>
+      <div>
+        <h2>Now viewing {user.username}'s profile.</h2>
+      </div>
+      <div>
+        <div>
+          <h2>{user.username}'s Bio</h2>
+          {
+            !user.bio ? (
+              <p>No bio yet</p>
+            ) : (
+              <p>{user.bio}</p>
+            )
+          }
+        </div>
+        <div>
+          <h2>{user.username}'s Gamertags</h2>
+          <div>
+            <p>Xbox: {user.xboxTag}</p>
+            <p>PSN: {user.psTag}</p>
+            <p>Nintendo: {user.nintendoTag}</p>
+            <p>Twitch: {user.twitchTag}</p>
+            <p>Steam: {user.steamTag}</p>
+            <p>iOS: {user.appleTag}</p>
+            <p>Android: {user.galaxyTag}</p>
+          </div>
+        </div>
+        <div>
+          <h2>{user.username}'s' Games</h2>
+          {
+            user.games.map((game) => (
+              <div key={game}>
+                <p>{game}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
     </div>
-  );
+  )
 };
-
-
-
-
-
-
-
-
-
 
 export default Profile;

@@ -6,6 +6,7 @@ import App from "./App";
 import Home from "./pages/Home";
 import Error from "./pages/Error";
 import Login from "./pages/Login";
+import MyProfile from "./pages/MyProfile";
 import Profile from "./pages/Profile";
 import BuddySearch from "./pages/BuddySearch";
 import BuddySearchPlatform from "./pages/BuddySearchPlatform";
@@ -33,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/myprofile",
-        element: <Profile />,
+        element: <MyProfile />,
       },
       {
         path: '/profile/:userParam',
