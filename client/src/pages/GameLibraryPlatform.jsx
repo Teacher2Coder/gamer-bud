@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams, Link } from 'react-router-dom';
 import PreviewGames from '../components/PreviewGames';
-import { Button } from '@chakra-ui/react';
-// import './GameLibrary.css';
-// const { REACT_APP_RAWG_KEY } = process.env;
+import { Card, Button } from '@chakra-ui/react';
+import Auth from '../utils/auth';
 
 const GameLibraryPlatform = () => {
   const [games, setGames] = useState([]);
@@ -57,6 +56,35 @@ const GameLibraryPlatform = () => {
     const { name, value } = e.target;
     setFormState({...formState, [name]: value});
   }
+
+  if (!Auth.loggedIn()) {
+      return (
+        <div>
+          <Card.Root>
+            <Card.Body>
+              <div>
+                <p>You must be logged in to see the game library!</p>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignContent: "center",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Link to="/login">
+                    <Button>Go to Login</Button>
+                  </Link>
+                  <Link to="/signup">
+                    <Button>Go to Signup</Button>
+                  </Link>
+                </div>
+              </div>
+            </Card.Body>
+          </Card.Root>
+        </div>
+      );
+    }
 
   return (
     <div className="game-library">

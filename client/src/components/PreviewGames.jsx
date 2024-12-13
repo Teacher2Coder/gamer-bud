@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Card, Button } from '@chakra-ui/react';
 import { useQuery, useMutation } from '@apollo/client'
-// import the query and the mutation when ready
 import { QUERY_MY_GAMES } from '../utils/queries';
 import { ADD_GAME, REMOVE_GAME } from '../utils/mutations';
 
@@ -13,7 +12,7 @@ const PreviewGames = ({ games }) => {
   const gameArray = data?.userGames.games || [];
   console.log(gameArray);
 
-  const [addGame, { error }] = useMutation(ADD_GAME, {
+  const [addGame, { addError }] = useMutation(ADD_GAME, {
     refetchQueries: [
       QUERY_MY_GAMES,
       'userGames'

@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
+import { Button } from '@chakra-ui/react';
 import { LOGIN } from '../utils/queries'
 import { useMutation } from '@apollo/client';
 
@@ -22,7 +23,7 @@ function LoginPage() {
       const response = await loginUser({ variables: { email, password } })
       console.log(response)
       localStorage.setItem("id_token", response.data.login.token)
-      navigate('/profile');
+      navigate('/myprofile');
     } catch (err) {
       setErrorMessage(err)
     }
@@ -38,7 +39,7 @@ function LoginPage() {
   }
 
   return (
-    <div className="loginsection">
+    <div className="signup-section">
       <h2>Login</h2>
 
       <form onSubmit={handleLoginSubmit}>
@@ -68,6 +69,14 @@ function LoginPage() {
       </form>
 
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+      <p style={{ marginTop: '50px' }}>
+        Don't have an account? 
+        <Link to='/signup'>
+          <Button>
+            Go to Signup
+          </Button>
+        </Link>
+      </p>
     </div>
   );
 }

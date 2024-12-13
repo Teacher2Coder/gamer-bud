@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { Button } from '@chakra-ui/react';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
@@ -14,6 +14,8 @@ function SignUpPage() {
     password: '',
     confirmPassword: ''
   });
+
+  const navigate = useNavigate();
 
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -36,6 +38,7 @@ function SignUpPage() {
         variables: { username, email, password }
       });
       Auth.login(data.addUser.token);
+      navigate('/myprofile')
     } catch (err) {
       console.error(err)
       setErrorMessage('Something went wrong...')
@@ -106,7 +109,7 @@ function SignUpPage() {
 
       {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
-      <p>
+      <p style={{ marginTop: '50px' }}>
         Already have an account? 
         <Link to='/login'>
           <Button>
