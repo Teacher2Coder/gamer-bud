@@ -62,7 +62,7 @@ const BuddyForm = () => {
   return (
     <div>
       <Card.Root width='85%' margin='0 auto'>
-        <Card.Body>
+        <Card.Body style={{backgroundColor: 'black'}}>
           <form onSubmit={handleFormSubmit}>
             <div className='form-group'>
               <div className='form-item'>
