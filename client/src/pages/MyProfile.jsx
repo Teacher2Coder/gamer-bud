@@ -26,16 +26,16 @@ const MyProfile = () => {
   }
 
   return (
-    <div>
-      <Card.Root backGroundColor='black' width='75%' margin='0 auto'>
-        <Card.Header>
-          <Card.Title>
+    <div className="my-profile">
+      <Card.Root width='75%' margin='0 auto'>
+        <Card.Header backgroundColor={'black'}>
+          <Card.Title backgroundColor={'black'}>
               <div>
                 <h2>Now viewing your profile.</h2>
               </div>
             </Card.Title>
         </Card.Header>
-        <Card.Body>
+        <Card.Body backgroundColor={'black'}>
           <div>
             <div>
               <h2>Bio</h2>
@@ -73,7 +73,7 @@ const MyProfile = () => {
             </div>
           </div>
         </Card.Body>
-          <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: 'black' }}>
             <EditProfileModal user={user}/>
           </div>
       </Card.Root>
