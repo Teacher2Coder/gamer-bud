@@ -57,7 +57,7 @@ const Profile = () => {
               {
                 user.games.map((game) => (
                   <div key={game}>
-                    <Link to={`posts/games/${game}`}>
+                    <Link to={`/posts/games/${game}`}>
                       <p>{game}</p>
                     </Link>
                   </div>
