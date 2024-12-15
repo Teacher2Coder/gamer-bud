@@ -70,7 +70,7 @@ const EditProfileModal = (user) => {
               <Textarea 
                 name='bio'
                 value={formState.status}
-                style={{color: 'black', border: '1px solid white'}}
+                style={{color: 'white', border: '1px solid white'}}
                 onChange={handleFormChange}
               />
             </div>
