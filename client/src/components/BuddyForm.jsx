@@ -90,7 +90,7 @@ const BuddyForm = () => {
                 name='description'
                 placeholder='Your description here'
                 value = {formState.description}
-                style = {{ color: 'white', border: '2px solid white', padding: '3px', minHeight: '100px' }}
+                style = {{ color: 'black', border: '2px solid white', padding: '3px', minHeight: '100px' }}
                 onChange={handleFormChange}
               />
             </div>
@@ -100,7 +100,7 @@ const BuddyForm = () => {
                 name='playersNeeded'
                 placeholder='number of players here'
                 value = {formState.playersNeeded}
-                style = {{ color: 'white', border: '2px solid white', padding: '3px' }}
+                style = {{ color: 'black', border: '2px solid white', padding: '3px' }}
                 onChange={handleFormChange}
               ></input>
             </div>
