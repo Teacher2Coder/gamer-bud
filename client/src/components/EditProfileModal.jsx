@@ -58,7 +58,7 @@ const EditProfileModal = (user) => {
           Edit Profile
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent style={{backgroundColor: 'black'}}>
         <DialogHeader>
           <DialogTitle>Edit your profile</DialogTitle>
           <DialogCloseTrigger />
@@ -70,7 +70,7 @@ const EditProfileModal = (user) => {
               <Textarea 
                 name='bio'
                 value={formState.status}
-                style={{color: 'white', border: '1px solid white'}}
+                style={{color: 'black', border: '1px solid white'}}
                 onChange={handleFormChange}
               />
             </div>
@@ -81,7 +81,7 @@ const EditProfileModal = (user) => {
                   <input
                     name='xboxTag'
                     value={formState.xboxTag}
-                    style={{color: 'white'}}
+                    style={{color: 'black'}}
                     onChange={handleFormChange}
                   />
                 </div>
@@ -90,7 +90,7 @@ const EditProfileModal = (user) => {
                   <input 
                     name='psTag'
                     value={formState.psTag}
-                    style={{color: 'white'}}
+                    style={{color: 'black'}}
                     onChange={handleFormChange}
                   />
                 </div>
@@ -99,7 +99,7 @@ const EditProfileModal = (user) => {
                   <input 
                     name='nintendoTag'
                     value={formState.nintendoTag}
-                    style={{color: 'white'}}
+                    style={{color: 'black'}}
                     onChange={handleFormChange}
                   />
                 </div>
@@ -110,7 +110,7 @@ const EditProfileModal = (user) => {
                   <input 
                     name='steamTag'
                     value={formState.nintendoTag}
-                    style={{color: 'white'}}
+                    style={{color: 'black'}}
                     onChange={handleFormChange}
                   />
                 </div>
@@ -119,7 +119,7 @@ const EditProfileModal = (user) => {
                   <input 
                     name='twitchTag'
                     value={formState.twitchTag}
-                    style={{color: 'white'}}
+                    style={{color: 'black'}}
                     onChange={handleFormChange}
                   />
                 </div>
@@ -130,7 +130,7 @@ const EditProfileModal = (user) => {
                     <input 
                       name='appleTag'
                       value={formState.nintendoTag}
-                      style={{color: 'white'}}
+                      style={{color: 'black'}}
                       onChange={handleFormChange}
                     />
                   </div>
@@ -139,7 +139,7 @@ const EditProfileModal = (user) => {
                     <input 
                       name='galaxyTag'
                       value={formState.nintendoTag}
-                      style={{color: 'white'}}
+                      style={{color: 'black'}}
                     onChange={handleFormChange}
                   />
                 </div>
