@@ -18,7 +18,7 @@ const BuddyForm = () => {
   const games = data?.userGames.games || [];
 
   const platforms = [
-    'Xbox Series X/S',
+    'Xbox Series S/X',
     'PlayStation 5',
     'PC',
     'Nintendo Switch',
