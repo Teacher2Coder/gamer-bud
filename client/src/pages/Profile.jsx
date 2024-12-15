@@ -21,14 +21,14 @@ const Profile = () => {
   return (
     <div>
       <Card.Root backGroundColor='black' width='75%' margin='0 auto'>
-        <Card.Header>
-          <Card.Title>
+        <Card.Header style={{backgroundColor: 'black'}}>
+          <Card.Title style={{backgroundColor: 'black'}}>
               <div>
                 <h2>Now viewing {user.username}'s profile.</h2>
               </div>
             </Card.Title>
         </Card.Header>
-        <Card.Body>
+        <Card.Body style={{backgroundColor: 'black'}}>
           <div>
             <div>
               <h2>{user.username}'s Bio</h2>
